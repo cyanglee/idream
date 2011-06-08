@@ -1,0 +1,28 @@
+<% title "Job" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @job.user_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @job.name %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%= @job.desc %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%= @job.start_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+  <%= @job.end_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_job_path(@job) %> |
+  <%= link_to "Destroy", @job, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", jobs_path %>
+</p>
