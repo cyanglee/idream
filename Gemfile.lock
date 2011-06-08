@@ -32,6 +32,9 @@ GEM
     activesupport (3.1.0.rc1)
       multi_json (~> 1.0)
     arel (2.1.1)
+    authlogic (3.0.3)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
     capybara (1.0.0.beta1)
@@ -88,7 +91,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.12)
     multi_json (1.0.3)
+    nifty-generators (0.4.6)
     nokogiri (1.4.4)
     paperclip (2.3.11)
       activerecord (>= 2.3.0)
@@ -162,6 +167,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
+  bcrypt-ruby
   capybara
   coffee-script
   cucumber-rails
@@ -171,6 +178,8 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   mime-types
+  mocha
+  nifty-generators
   paperclip
   rails (= 3.1.0.rc1)
   rails3-generators

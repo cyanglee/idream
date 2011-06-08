@@ -1,5 +1,17 @@
-Myapp::Application.routes.draw do
+Myapp::Application.routes.draw do  
+  match 'user/edit' => 'users#edit', :as => :edit_current_user
+
+  match 'signup' => 'users#new', :as => :signup
+
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+
+  match 'login' => 'user_sessions#new', :as => :login
+
+  resources :user_sessions
+
   resources :users
+
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -19,6 +19,9 @@ gem 'haml-rails', :group => :development
 gem 'paperclip'
 gem 'mime-types'
 gem 'simple_form'
+gem "nifty-generators", :group => :development
+gem "authlogic"
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -36,4 +39,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'mocha'
 end

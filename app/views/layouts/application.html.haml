@@ -1,0 +1,38 @@
+!!!
+%html
+
+  %head
+    %title
+      = yield(:title) || "Untitled"
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+    = yield(:head)
+
+  %body
+    .container
+      .span-24.large
+        %span Header
+        %nav
+          %ul
+            %li
+              = link_to "Home", root_path
+              |
+            %li
+              = link_to "Register", signup_path
+              |
+            %li
+              = link_to "Log in", login_path
+              |
+            %li
+              %a Help
+
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
+
+        - if show_title?
+          %h1= yield(:title)
+
+        = yield
+      .span-24 Footer

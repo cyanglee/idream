@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110528035351) do
+ActiveRecord::Schema.define(:version => 20110606024510) do
 
   create_table "uploads", :force => true do |t|
     t.integer  "user_id"
@@ -23,12 +23,16 @@ ActiveRecord::Schema.define(:version => 20110528035351) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "username"
     t.string   "email"
-    t.string   "encrypted_passwd"
-    t.string   "salt"
+    t.string   "persistence_token"
+    t.string   "crypted_password"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
+    t.string   "home_phone"
+    t.string   "cell_phone"
   end
 
 end
