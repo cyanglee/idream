@@ -20,8 +20,9 @@ gem 'paperclip'
 gem 'mime-types'
 gem 'simple_form'
 gem "nifty-generators", :group => :development
-gem "authlogic"
 gem "bcrypt-ruby", :require => "bcrypt"
+gem "devise"
+gem "omniauth"
 
 # Use unicorn as the web server
 # gem 'unicorn'

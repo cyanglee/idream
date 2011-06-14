@@ -1,0 +1,8 @@
+= simple_form_for @job do |f|
+  = f.error_messages
+  -#= f.association :user, :collection => [current_user], :label_method => :email, :value_method => :id
+  = f.input :name
+  = f.input :desc
+  = f.input :start_date
+  = f.input :end_date
+  = f.button :submit
