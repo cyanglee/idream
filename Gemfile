@@ -15,13 +15,12 @@ gem 'uglifier'
 gem 'jquery-rails'
 
 gem 'haml'
-gem 'haml-rails', :group => :development
 gem 'paperclip'
 gem 'mime-types'
 gem 'simple_form'
-gem "nifty-generators", :group => :development
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "devise"
+gem "cancan"
 gem "omniauth"
 
 # Use unicorn as the web server
@@ -31,14 +30,20 @@ gem "omniauth"
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :development do
+    gem 'haml-rails'
+    gem 'nifty-generators'
+    #gem 'ruby-debug-ide'
+end
 
 group :test do
-  gem 'database_cleaner'
-  gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'cucumber-rails'
-  gem 'capybara'
-  gem 'mocha'
+    gem 'database_cleaner'
+    gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
+    gem 'rspec-rails'
+    gem 'factory_girl_rails'
+    gem 'cucumber-rails'
+    gem 'capybara'
+    gem 'mocha'
 end

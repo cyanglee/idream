@@ -1,8 +1,10 @@
 Myapp::Application.routes.draw do  
   devise_for :users
 
+  # TODO: change the edit route. Don't display the user id in the url. Get the id directly from the session
   resources :users
   resources :jobs
+  resources :roles
 
   root :to => 'pages#home'
 

@@ -23,24 +23,41 @@
                 |
               %li
                 = link_to "Sign out", destroy_user_session_path
-                ||
+                |
+              %li
+                = link_to "Account Settings", edit_user_path(current_user)
+                |
             - else
               %li
                 = link_to "Sign up", new_user_registration_path
                 or
                 = link_to "Sign in", new_user_session_path
-                ||
+
+            - if can? :manage, User
+              %li
+                = link_to "Manage Users", users_path
+                |
+              %li
+                = link_to "Manage Roles", roles_path
+                |
+          %ul
             %li
               = link_to "Home", root_path
               |
             %li
               %a Help
-          %ul
-            %li 
+              |
+            %li
+              %a About us
+              |
+            %li
               = link_to "Post Volunteer Works", new_job_path
               |
             %li
               = link_to "Find Volunteer Works", jobs_path
+              |
+
+            
 
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}"

@@ -1,0 +1,33 @@
+- title "Users" 
+
+%table#user-table
+  %tr
+    %th User Id
+    %th Email
+    %th Remember created at
+    %th Sign in count
+    %th Current sign in at
+    %th Last sign in at
+  - for user in @users
+    %tr
+      %td 
+        = user.id
+      %td 
+        = user.email
+      %td 
+        = user.remember_created_at
+      %td 
+        = user.sign_in_count
+      %td 
+        = user.current_sign_in_at
+      %td 
+        = user.last_sign_in_at
+      %td 
+        = link_to "Show", user
+      %td 
+        = link_to "Edit", edit_user_path(user)
+      %td 
+        = link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete
+        
+%p
+  = link_to "New User", new_user_path

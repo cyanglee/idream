@@ -1,0 +1,13 @@
+= simple_form_for @role do |form|
+
+  -if @role.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@role.errors.count, "error")} prohibited this #{Role.name.titleize} from being saved:"
+      %ul
+        - @role.errors.full_messages.each do |msg|
+          %li= msg  
+
+  = form.input :name, :label => 'Name'
+
+  .actions
+    = form.button :submit
