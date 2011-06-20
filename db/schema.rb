@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20110619024716) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "desc"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(:version => 20110619024716) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "uploads", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -60,5 +50,8 @@ ActiveRecord::Schema.define(:version => 20110619024716) do
     t.datetime "updated_at"
     t.integer  "admin"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

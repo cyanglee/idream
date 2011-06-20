@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     load_and_authorize_resource
-    skip_authorize_resource :only => :edit
+    #skip_authorize_resource :only => [:edit, :update]
     before_filter :find_user, :only => [:show, :update]
     before_filter :filter_roles, :only => [:show, :edit, :update]
 

@@ -1,5 +1,5 @@
 class CreateJobs < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :jobs do |t|
       t.integer :user_id
       t.string :name
@@ -8,9 +8,5 @@ class CreateJobs < ActiveRecord::Migration
       t.datetime :end_date
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :jobs
   end
 end

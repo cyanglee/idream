@@ -1,0 +1,16 @@
+%h2 Sign up
+
+= simple_form_for @user do |f|
+  = devise_error_messages!
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  Roles
+  - for role in User.user_roles
+    %span
+      = check_box_tag "user[role_ids][]", role.id
+      = h role.name
+  %br/
+  = f.button :submit, "Sign up"
+
+= render :partial => "devise/shared/links"

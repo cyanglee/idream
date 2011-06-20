@@ -5,6 +5,14 @@ class Ability
         user ||= User.new # in case of guest
         if user.has_role? :admin
             can :manage, :all
+        elsif user.has_role? :volunteer
+            can :read, Job
+            can [:edit, :show], User
+        elsif user.has_role? :organization
+            can [:read, :create], Job
+            can :edit, Job, :user_id => user.id
+            can [:edit, :show], User
+        # as a guest
         else
             can :read, Job
         end

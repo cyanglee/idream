@@ -60,8 +60,5 @@ module Myapp
     %w(middleware).each do |dir|
         config.autoload_paths << "#{config.root}/app/#{dir}"
     end
-
-    config.gem 'mime-types', :lib => 'mime/types'
-    config.gem 'paperclip'
   end
 end

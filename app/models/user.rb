@@ -13,8 +13,15 @@ class User < ActiveRecord::Base
     # Setup accessible (or protected) attributes for your model
     attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
 
-
     def has_role?(role_sym)
         roles.any? { |r| r.name.underscore.to_sym == role_sym }
+    end
+
+    def self.user_roles
+        @user_roles = []
+        for role in Role.all
+            @user_roles << role if role.name != 'Admin'
+        end
+        return @user_roles
     end
 end
