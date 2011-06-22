@@ -7,11 +7,11 @@ class Ability
             can :manage, :all
         elsif user.has_role? :volunteer
             can :read, Job
-            can [:edit, :show], User
+            can [:edit, :update, :show], User
         elsif user.has_role? :organization
             can [:read, :create], Job
             can :edit, Job, :user_id => user.id
-            can [:edit, :show], User
+            can [:edit, :update, :show], User
         # as a guest
         else
             can :read, Job

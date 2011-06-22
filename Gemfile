@@ -47,4 +47,5 @@ group :test do
     gem 'capybara'
     gem 'mocha'
     gem 'launchy'
+    gem 'pickle'
 end

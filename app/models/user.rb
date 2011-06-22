@@ -17,11 +17,15 @@ class User < ActiveRecord::Base
         roles.any? { |r| r.name.underscore.to_sym == role_sym }
     end
 
-    def self.user_roles
-        @user_roles = []
+    def self.role_list
+        @role_list = []
         for role in Role.all
-            @user_roles << role if role.name != 'Admin'
+            @role_list << role if role.name != 'Admin'
         end
-        return @user_roles
+        return @role_list
+    end
+    
+    def self.user_roles(user)
+        return user.roles.reduce([]) {|result, element| result << element.name}.join(", ")
     end
 end

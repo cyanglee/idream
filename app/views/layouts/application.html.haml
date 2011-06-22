@@ -44,20 +44,19 @@
             %li
               = link_to "Home", root_path
               |
+            - if user_signed_in?
+              %li
+                = link_to "Post Volunteer Works", new_job_path
+                |
+            %li
+              = link_to "Find Volunteer Works", jobs_path
+              |
             %li
               %a Help
               |
             %li
               %a About us
               |
-            %li
-              = link_to "Post Volunteer Works", new_job_path
-              |
-            %li
-              = link_to "Find Volunteer Works", jobs_path
-              |
-
-            
 
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}"

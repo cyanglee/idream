@@ -4,8 +4,8 @@ class CreateJobs < ActiveRecord::Migration
             t.integer :user_id
             t.string :name
             t.string :desc
-            t.datetime :start_date
-            t.datetime :end_date
+            t.date :start_date
+            t.date :end_date
             t.timestamps
         end
 

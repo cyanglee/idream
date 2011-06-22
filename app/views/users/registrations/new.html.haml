@@ -6,7 +6,7 @@
   = f.input :password
   = f.input :password_confirmation
   Roles
-  - for role in User.user_roles
+  - for role in User.role_list
     %span
       = check_box_tag "user[role_ids][]", role.id
       = h role.name
