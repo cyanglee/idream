@@ -3,17 +3,16 @@ Feature: Test user permissions
   As a user
   I want to sign up and login
 
-  @focus
-  Scenario: User Registration
-    When I go to the home page
-    And I follow "Sign up"
-    And I fill in the following:
-      | Email                 | cyoung.lee@gmail.com |
-      | password              | 123456               |
-      | password_confirmation | 123456               |
-    And I choose "Volunteer"
-    And I press "Sign up"
-    And I should see "Welcome! You have signed up successfully."
+#  Scenario: User Registration
+#    When I go to the home page
+#    And I follow "Sign up"
+#    And I fill in the following:
+#      | Email                 | cyoung.lee@gmail.com |
+#      | password              | 123456               |
+#      | password_confirmation | 123456               |
+#    And I choose "Volunteer"
+#    And I press "Sign up"
+#    And I should see "Welcome! You have signed up successfully."
 
 
   Scenario: User Sign in
