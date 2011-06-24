@@ -4,4 +4,7 @@ Factory.define :user do |f|
     f.password "123456"
     f.password_confirmation "123456"
     f.admin 1
+    f.roles { |user| [user.association(:volunteer),
+                      user.association(:organization)] }
+
 end

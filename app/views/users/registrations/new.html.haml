@@ -5,12 +5,7 @@
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
-  Roles
-  - for role in User.role_list
-    %span
-      = check_box_tag "user[role_ids][]", role.id
-      = h role.name
-  %br/
+  = f.association :roles, :collection => User.role_list, :as => :radio
   = f.button :submit, "Sign up"
 
 = render :partial => "devise/shared/links"

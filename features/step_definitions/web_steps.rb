@@ -55,6 +55,7 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
+  save_and_open_page
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -78,6 +79,8 @@ end
 #
 When /^(?:|I )fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
+    name = name.dup.strip!
+    value = value.dup.strip!
     When %{I fill in "#{name}" with "#{value}"}
   end
 end
@@ -97,6 +100,15 @@ end
 When /^(?:|I )choose "([^"]*)"$/ do |field|
   choose(field)
 end
+
+When /^I (check|choose) the (\d+)(st|nd|rd|th) item with the value "([^"]*)"$/ do |action, index, junk, value|
+    if action == 'check'
+      page.all("input[value='#{value}']")[index.to_i-1].check
+    else
+      page.all("input[value='#{value}']")[index.to_i-1].choose
+    end
+end
+
 
 When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
