@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do  
+  resources :organizations
+
   devise_for :users
 
   # TODO: change the edit route. Don't display the user id in the url. Get the id directly from the session

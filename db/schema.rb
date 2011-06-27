@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615033912) do
+ActiveRecord::Schema.define(:version => 20110626170908) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -24,16 +24,43 @@ ActiveRecord::Schema.define(:version => 20110615033912) do
 
   create_table "jobs", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.string   "desc"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.integer  "organization_id"
+    t.string   "title"
+    t.text     "desc"
+    t.text     "location"
+    t.text     "requirement"
+    t.string   "contact"
+    t.integer  "hours"
+    t.string   "hours_period"
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.time     "begin_time"
+    t.time     "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "jobs", ["name"], :name => "index_jobs_on_name"
+  add_index "jobs", ["organization_id"], :name => "index_jobs_on_organization_id"
+  add_index "jobs", ["title"], :name => "index_jobs_on_title"
   add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.text     "profile"
+    t.string   "address"
+    t.string   "district"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "category"
+    t.string   "contact"
+    t.integer  "creator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organizations", ["contact"], :name => "index_organizations_on_contact"
+  add_index "organizations", ["creator"], :name => "index_organizations_on_creator"
+  add_index "organizations", ["name"], :name => "index_organizations_on_name"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -44,6 +71,16 @@ ActiveRecord::Schema.define(:version => 20110615033912) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.integer  "birth_day"
+    t.integer  "birth_month"
+    t.integer  "birth_year"
+    t.string   "zip_code"
+    t.boolean  "volunteer"
+    t.boolean  "org"
+    t.boolean  "admin"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
@@ -56,11 +93,12 @@ ActiveRecord::Schema.define(:version => 20110615033912) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.integer  "admin"
   end
 
+  add_index "users", ["admin"], :name => "index_users_on_admin"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["org"], :name => "index_users_on_org"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
 end

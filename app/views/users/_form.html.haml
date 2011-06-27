@@ -1,13 +1,12 @@
 = simple_form_for @user do |f|
   = f.error_messages
-  -#= f.association :user, :collection => [current_user], :label_method => :email, :value_method => :id
   = f.input :email
+  = f.input :first_name
+  = f.input :last_name
+
+  -#= f.association :user, :collection => [current_user], :label_method => :email, :value_method => :id
   -#= f.association :roles, :as => :check_boxes
 
-  - for role in @filtered_roles
-    %div
-      = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role)
-      = h role.name
 
   = f.button :submit
   
