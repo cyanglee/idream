@@ -3,18 +3,24 @@ class Ability
 
     def initialize(user)
         user ||= User.new # in case of guest
+
+        # as a guest
+        can :read, Job
+
         if user.has_role? user, :admin
             can :manage, :all
-        elsif user.has_role? user, :volunteer
+        end
+
+        if user.has_role? user, :volunteer
             can :read, Job
             can [:edit, :update, :show], User
-        elsif user.has_role? user, :org
+        end
+
+        if user.has_role? user, :organization
+            #can :edit, Organization, :user
             can [:read, :create], Job
             can :edit, Job, :user_id => user.id
             can [:edit, :update, :show], User
-        # as a guest
-        else
-            can :read, Job
         end
     end
 

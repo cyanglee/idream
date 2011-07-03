@@ -1,13 +1,14 @@
 Myapp::Application.routes.draw do  
   resources :organizations
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "user/registrations"}
 
   # TODO: change the edit route. Don't display the user id in the url. Get the id directly from the session
   resources :users
   resources :jobs
   resources :roles
 
+  match '/admin', :to => 'pages#admin'
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:

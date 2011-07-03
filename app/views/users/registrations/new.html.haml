@@ -1,11 +1,22 @@
 %h2 Sign up
 
+#user_details
 = simple_form_for @user do |f|
-  = devise_error_messages!
-  = f.input :email
-  = f.input :password
-  = f.input :password_confirmation
-  = f.association :roles, :collection => User.role_list, :as => :radio
-  = f.button :submit, "Sign up"
+    = devise_error_messages!
+    = check_box_tag 'user[volunteer]', "1", true, :class => 'boolean optional'
+    = label_tag 'Vounteer'
+    = check_box_tag 'user[organization]', "1", false, :class => 'boolean optional'
+    = label_tag 'organization'
+    = f.input :email
+    = f.input :password, :as => :password
+    = f.input :password_confirmation, :as => :password
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :date_of_birth, :as => :date, :start_year => Date.today.year - 60,
+                            :end_year => Date.today.year - 12,
+                            :order => [:day, :month, :year]
+    = f.input :phone_number, :as => :tel
+    = f.input :zip_code
+    = f.button :submit, "Sign up"
 
 = render :partial => "devise/shared/links"

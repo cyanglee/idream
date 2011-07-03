@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
            :omniauthable
 
     has_many :jobs
+    has_many :reps
+    has_many :organizations, :through => :reps
     #has_many :assignments
     #has_many :roles, :through => :assignments, :dependent => :destroy
 

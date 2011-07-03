@@ -4,12 +4,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
             t.string :first_name
             t.string :last_name
             t.string :phone_number
-            t.integer :birth_day
-            t.integer :birth_month
-            t.integer :birth_year
+            t.date :date_of_birth
             t.string :zip_code
             t.boolean :volunteer
-            t.boolean :org
+            t.boolean :organization
             t.boolean :admin
             t.database_authenticatable :null => false
             t.recoverable
@@ -26,7 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
         add_index :users, :reset_password_token, :unique => true
         # add_index :users, :confirmation_token,   :unique => true
         add_index :users, :volunteer
-        add_index :users, :org
+        add_index :users, :organization
         add_index :users, :admin
 
         # add_index :users, :authentication_token, :unique => true

@@ -1,8 +1,6 @@
-= form_for @organization do |f|
+= simple_form_for @organization do |f|
   = f.error_messages
-  %p
-    = f.label :name
-    %br
-    = f.text_field :name
-  %p
-    = f.submit
+  = f.input :name, :label => 'Createa a new organization'
+  or 
+  = f.input :name, :collection => Organization.all, :label_method => :name, :value_method => :name, :label => 'Pick from an existing organization'
+  = f.submit

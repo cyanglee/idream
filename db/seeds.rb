@@ -14,9 +14,7 @@ User.create!([{
                   :first_name => "Admin",
                   :last_name => "Lee",
                   :phone_number => "123-456-789",
-                  :birth_day => 5,
-                  :birth_month => 7,
-                  :birth_year => 1981,
+                  :date_of_birth => "1981-7-5",
                   :zip_code => "11276"
               },
               {
@@ -25,9 +23,7 @@ User.create!([{
                   :first_name => "Volunteer",
                   :last_name => "Lee",
                   :phone_number => "123-456-789",
-                  :birth_day => 5,
-                  :birth_month => 7,
-                  :birth_year => 1981,
+                  :date_of_birth => "1981-7-5",
                   :zip_code => "11276",
                   :volunteer => 1
               },
@@ -37,14 +33,28 @@ User.create!([{
                   :first_name => "Org",
                   :last_name => "Lee",
                   :phone_number => "123-456-789",
-                  :birth_day => 5,
-                  :birth_month => 7,
-                  :birth_year => 1981,
+                  :date_of_birth => "1981-7-5",
                   :zip_code => "11276",
-                  :org => 1
+                  :organization => 1
               }
              ])
 
+# Add organizations
+Organization.delete_all
+Organization.create!([{
+                          :name => "abc",
+                          :profile => "abc"
+                      },
+                      {
+                          :name => "cde",
+                          :profile => "cde"
+                      },
+                      {
+                          :name => "fff",
+                          :profile => "fff"
+                      }
+                     ]
+)
 
 # Add roles
 Role.delete_all

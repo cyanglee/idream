@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626170908) do
+ActiveRecord::Schema.define(:version => 20110703182428) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -56,11 +56,22 @@ ActiveRecord::Schema.define(:version => 20110626170908) do
     t.integer  "creator"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   add_index "organizations", ["contact"], :name => "index_organizations_on_contact"
   add_index "organizations", ["creator"], :name => "index_organizations_on_creator"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
+
+  create_table "reps", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reps", ["organization_id"], :name => "index_reps_on_organization_id"
+  add_index "reps", ["user_id"], :name => "index_reps_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -74,12 +85,10 @@ ActiveRecord::Schema.define(:version => 20110626170908) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.integer  "birth_day"
-    t.integer  "birth_month"
-    t.integer  "birth_year"
+    t.date     "date_of_birth"
     t.string   "zip_code"
     t.boolean  "volunteer"
-    t.boolean  "org"
+    t.boolean  "organization"
     t.boolean  "admin"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -97,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20110626170908) do
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["org"], :name => "index_users_on_org"
+  add_index "users", ["organization"], :name => "index_users_on_organization"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
