@@ -1,17 +1,17 @@
-en:
+mn:
   errors:
     messages:
-      not_found: "not found"
-      already_confirmed: "was already confirmed"
-      not_locked: "was not locked"
+      not_found: "олдсонгүй"
+      already_confirmed: "аль хэдийн шалгагдсан"
+      not_locked: "түгжигдээгүй"
 
   devise:
     failure:
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
+      unauthenticated: 'Та эхлээд нэвтрэх юмуу бүртгүүлсэн байх ёстой.'
+      unconfirmed: 'Таны бүртгэл шалгагдаагүй байна.'
+      locked: 'Таны бүртгэл түгжигдсэн байна.'
+      invalid: 'Э-мэйл эсвэл Нууц код буруу байна.'
+      invalid_token: 'Шалгах тэмдэг тохирсонгүй.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:

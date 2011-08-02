@@ -11,17 +11,17 @@ User.delete_all
 User.create!([{
                   :email => "admin@cyanglee.com",
                   :password => "123456",
-                  :first_name => "Admin",
-                  :last_name => "Lee",
+                  :name => "Admin",
                   :phone_number => "123-456-789",
                   :date_of_birth => "1981-7-5",
-                  :zip_code => "11276"
+                  :zip_code => "11276",
+                  :volunteer => 1,
+                  :organization => 1
               },
               {
                   :email => "volunteer@cyanglee.com",
                   :password => "123456",
-                  :first_name => "Volunteer",
-                  :last_name => "Lee",
+                  :name => "Volunteer",
                   :phone_number => "123-456-789",
                   :date_of_birth => "1981-7-5",
                   :zip_code => "11276",
@@ -30,8 +30,7 @@ User.create!([{
               {
                   :email => "org@cyanglee.com",
                   :password => "123456",
-                  :first_name => "Org",
-                  :last_name => "Lee",
+                  :name => "Org",
                   :phone_number => "123-456-789",
                   :date_of_birth => "1981-7-5",
                   :zip_code => "11276",

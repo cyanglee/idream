@@ -23,9 +23,10 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "devise"
 gem "cancan"
 gem "omniauth"
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
 
 # Use unicorn as the web server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

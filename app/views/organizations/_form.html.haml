@@ -1,6 +1,22 @@
 = simple_form_for @organization do |f|
   = f.error_messages
-  = f.input :name, :label => 'Createa a new organization'
-  or 
-  = f.input :name, :collection => Organization.all, :label_method => :name, :value_method => :name, :label => 'Pick from an existing organization'
+  = radio_button_tag :org, :create, true
+  %b Create a new organization
+  #new_org
+    = f.input :name, :input_html => {:class => "new_org"}
+    = f.input :profile, :as => :text
+    = f.input :contact
+    = f.input :city, :collection => cities_helper, :include_blank => false
+    = f.input :district#, :collection => districts_helper("台北市")
+    = f.input :zipcode
+    = f.input :address
+    -#= f.input :category
+  or
+  %br
+  = radio_button_tag :org, :pick
+  %b Choose an existing organization
+  #existing_org
+    = f.input :id, :label => 'Organization' do
+      = f.select :id, Organization.all.map { |o| [o.name << ", Status: " << o.status, o.id]}, {:include_blank => false}, {:class => "existing_org"}
+  %br
   = f.submit

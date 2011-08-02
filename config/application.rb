@@ -54,6 +54,9 @@ module Myapp
       g.form_builder :simple_form
       g.template_engine :haml
     end
+
+    # autoclose tags like br, input, etc.
+    Haml::Template.options[:format] = :xhtml
     
     # Add additional load paths for your own custom dirs
     # config.load_paths += %W( #{RAILS_ROOT}/extras )

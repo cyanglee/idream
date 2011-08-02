@@ -12,12 +12,25 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(params[:organization])
-    if @organization.save
-      redirect_to @organization, :notice => "Successfully created organization."
+    if params[:organization][:id].nil?
+      @organization = Organization.new(params[:organization]) 
+
+      if @organization.save
+         redirect_to @organization, :notice => "Successfully created organization."
+      else
+         render :action => 'new'
+      end
     else
-      render :action => 'new'
+      @organization = Organization.find(params[:organization][:id])
+      user_ids = []
+      user_ids = @organization.user_ids << current_user.id unless @organization.user_ids.include?(current_user.id)
+      if @organization.update_attribute(:user_ids, user_ids)
+          redirect_to @organization, :notice => "Successfully updated user."
+      else
+          render :action => 'new'
+      end
     end
+
   end
 
   def edit

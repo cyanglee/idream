@@ -15,7 +15,7 @@ class JobsController < ApplicationController
     end
 
     def create
-        @job = current_user.jobs.build(params[:job])
+        @job = current_user.organizations.build(params[:job])
         if @job.save
             redirect_to @job, :notice => "Successfully created job."
         else

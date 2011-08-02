@@ -8,6 +8,7 @@ class Ability
         can :read, Job
 
         if user.has_role? user, :admin
+            can :access, :rails_admin
             can :manage, :all
         end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110703182428) do
+ActiveRecord::Schema.define(:version => 20110703211553) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -63,15 +63,23 @@ ActiveRecord::Schema.define(:version => 20110703182428) do
   add_index "organizations", ["creator"], :name => "index_organizations_on_creator"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
 
-  create_table "reps", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "organization_id"
+  create_table "organizations_users", :id => false, :force => true do |t|
+    t.integer "organization_id", :null => false
+    t.integer "user_id",         :null => false
+  end
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.string   "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "reps", ["organization_id"], :name => "index_reps_on_organization_id"
-  add_index "reps", ["user_id"], :name => "index_reps_on_user_id"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -82,8 +90,7 @@ ActiveRecord::Schema.define(:version => 20110703182428) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "name"
     t.string   "phone_number"
     t.date     "date_of_birth"
     t.string   "zip_code"

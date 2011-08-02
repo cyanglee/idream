@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
            :omniauthable
 
     has_many :jobs
-    has_many :reps
-    has_many :organizations, :through => :reps
+    has_and_belongs_to_many :organizations
     #has_many :assignments
     #has_many :roles, :through => :assignments, :dependent => :destroy
 
@@ -17,6 +16,13 @@ class User < ActiveRecord::Base
     # attr_accessor is used when you want to use a field in the controller or view which is not a field in the db.
     #attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
     attr_protected :admin
+
+    # the scope will return all the users based on the given criteria. e.g. User.admin would return an array of all the site admins.
+    # The main reason scopes are better than plain class methods is that they can be chained with other methods, so that, e.g.
+    # User.admin.paginate(:page => 1)
+    scope :admin, where(:admin => true)
+    scope :rep, where(:organization => true)
+    scope :volunteer, where(:volunteer => true)
 
     def has_role?(user, role_sym)
         user.id.nil? ? false : User.where(:id => user.id, role_sym => 1).any?
