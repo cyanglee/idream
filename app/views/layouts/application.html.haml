@@ -43,7 +43,7 @@
             %li
               = link_to "Home", root_path
               |
-            - if user_signed_in?
+            - if user_signed_in? and can? :create, Job
               %li
                 = link_to "Post Volunteer Works", new_job_path
                 |

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc1'
+gem 'rails', '3.1.0.rc6'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -22,8 +22,8 @@ gem 'simple_form'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "devise"
 gem "cancan"
-gem "omniauth"
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
+gem 'omniauth', '~> 0.2.6'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,24 +32,27 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch =>
 # gem 'capistrano'
 
 # To use debugger
-#gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'rspec-rails', :group => [:test, :development]
+gem 'growl_notify', :group => [:test, :development]
+gem 'pry', :group => [:test, :development]
 
 group :development do
     gem 'haml-rails'
     gem 'nifty-generators'
     gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
-    #gem 'ruby-debug-ide'
 end
 
 group :test do
     gem 'sqlite3'
     gem 'database_cleaner'
     gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
-    gem 'rspec-rails'
     gem 'factory_girl_rails'
     gem 'cucumber-rails'
-    gem 'capybara'
+    gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
     gem 'mocha'
     gem 'launchy'
     gem 'pickle'
+    gem "guard-rspec"  
 end

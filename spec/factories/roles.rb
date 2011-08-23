@@ -11,15 +11,15 @@
 #end
 #
 
-Factory.define :volunteer, :class => Role do |f|
-    f.name 'Volunteer'
-#    f.association :user
-end
+FactoryGirl.define do
+	factory :volunteer_role, :class => Role do
+    	name 'Volunteer'
+	end
+	factory :organization_role, :class => Role do
+    	name 'Organization'
+	end
 
-Factory.define :organization, :class => Role do |f|
-    f.name 'Organization'
-end
-
-Factory.define :admin, :class => Role do |f|
-    f.name 'Admin'
+	factory :admin_role, :class => Role do
+    name 'Admin'
+	end
 end

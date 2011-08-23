@@ -12,6 +12,7 @@ class OrganizationsController < ApplicationController
   end
 
   def create
+    # this is to handle the case when the user creates a new organization
     if params[:organization][:id].nil?
       @organization = Organization.new(params[:organization]) 
 
@@ -20,10 +21,12 @@ class OrganizationsController < ApplicationController
       else
          render :action => 'new'
       end
+      
     else
       @organization = Organization.find(params[:organization][:id])
       user_ids = []
       user_ids = @organization.user_ids << current_user.id unless @organization.user_ids.include?(current_user.id)
+      # TODO: update_attribute is not recommended since it doesn't have the validation over the passed in object
       if @organization.update_attribute(:user_ids, user_ids)
           redirect_to @organization, :notice => "Successfully updated user."
       else
