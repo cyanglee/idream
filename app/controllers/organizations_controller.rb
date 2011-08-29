@@ -21,7 +21,7 @@ class OrganizationsController < ApplicationController
       else
          render :action => 'new'
       end
-      
+    # this is to associate the user with an existing organization
     else
       @organization = Organization.find(params[:organization][:id])
       user_ids = []

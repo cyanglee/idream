@@ -1,0 +1,23 @@
+- title "Organizations"
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Organization
+    %th Start Date
+    %th End Date
+  - for job in @jobs
+    %tr
+      %td= job.title
+      %td= job.desc
+      %td= job.organization.name
+      %td= job.begin_date
+      %td= job.end_date
+      %td= job.desc
+
+      %td= link_to 'Show', job
+      %td= link_to 'Edit', edit_job_path(job)
+      %td= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Job", new_job_path

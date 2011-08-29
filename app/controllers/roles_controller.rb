@@ -5,7 +5,7 @@ class RolesController < ApplicationController
     @roles = Role.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @roles }
     end
   end

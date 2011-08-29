@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
-  attr_accessible :name, :desc, :start_date, :end_date
+  attr_accessible :all
   belongs_to :user
+  belongs_to :organization
 
 end
 # == Schema Information
