@@ -20,7 +20,7 @@ feature "UserLogins" do
     end
 
     scenario "test user login as org representative" do
-        user = Factory(:org_rep)
+        user = Factory(:org_admin)
         visit new_user_session_path
         within("#content") do
             fill_in 'Email', :with => user.email

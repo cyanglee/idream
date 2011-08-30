@@ -19,9 +19,8 @@ class Ability
 
         if user.has_role? user, :organization
             #can :edit, Organization, :user
-            can [:read, :create], Job
-            can :edit, Job, :user_id => user.id
-            can [:edit, :update, :show], User
+            can :manage, Job, :user_id => user.id
+            can :manage, User, :user_id => user.id
         end
     end
 

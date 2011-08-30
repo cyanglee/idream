@@ -1,5 +1,4 @@
 class Job < ActiveRecord::Base
-  attr_accessible :all
   belongs_to :user
   belongs_to :organization
 
