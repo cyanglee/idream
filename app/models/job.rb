@@ -2,6 +2,8 @@ class Job < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
 
+  has_many :volunteers
+  has_many :users, :through => :volunteers
 end
 # == Schema Information
 #

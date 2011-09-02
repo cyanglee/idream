@@ -1,45 +1,50 @@
 class User < ActiveRecord::Base
-    # Include default devise modules. Others available are:
-    # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable, :validatable,
-           :omniauthable
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
-    has_many :jobs
-    has_and_belongs_to_many :organizations
-    #has_many :assignments
-    #has_many :roles, :through => :assignments, :dependent => :destroy
+  #accepts_nested_attributes_for :roles
+  # Setup accessible (or protected) attributes for your model
+  # attr_accessible only allows the specified fileds to be created through mass assignment, while attr_protected works the other way around.
+  # attr_accessor is used when you want to use a field in the controller or view which is not a field in the db.
+  # If attr_accessible or attr_protected is not specified, all fields are open for mass assignment
+  #attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
+  attr_protected :admin
 
-    #accepts_nested_attributes_for :roles
-    # Setup accessible (or protected) attributes for your model
-    # attr_accessible only allows the specified fileds to be created through mass assignment, while attr_protected works the other way around.
-    # attr_accessor is used when you want to use a field in the controller or view which is not a field in the db.
-    # If attr_accessible or attr_protected is not specified, all fields are open for mass assignment
-    #attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
-    attr_protected :admin
+  # the scope will return all the users based on the given criteria. e.g. User.admin would return an array of all the site admins.
+  # The main reason scopes are better than plain class methods is that they can be chained with other methods, so that, e.g.
+  # User.admin.paginate(:page => 1)
+  scope :admin, where(:admin => true)
+  scope :rep, where(:organization => true)
+  scope :volunteer, where(:volunteer => true)
 
-    # the scope will return all the users based on the given criteria. e.g. User.admin would return an array of all the site admins.
-    # The main reason scopes are better than plain class methods is that they can be chained with other methods, so that, e.g.
-    # User.admin.paginate(:page => 1)
-    scope :admin, where(:admin => true)
-    scope :rep, where(:organization => true)
-    scope :volunteer, where(:volunteer => true)
 
-    def has_role?(user, role_sym)
-        user.id.nil? ? false : User.where(:id => user.id, role_sym => 1).any?
+  has_and_belongs_to_many :organizations
+
+  has_many :jobs
+  has_many :volunteers
+  has_many :jobs, :through => :volunteers, :dependent => :destroy
+
+  #has_many :assignments
+  #has_many :roles, :through => :assignments, :dependent => :destroy
+
+  def has_role?(user, role_sym)
+    user.id.nil? ? false : User.where(:id => user.id, role_sym => 1).any?
+  end
+
+  def self.role_list
+    @role_list = []
+    for role in Role.all
+      @role_list << role if role.name != 'Admin'
     end
+    return @role_list
+  end
 
-    def self.role_list
-        @role_list = []
-        for role in Role.all
-            @role_list << role if role.name != 'Admin'
-        end
-        return @role_list
-    end
-
-    def self.user_roles(user)
-        return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")
-    end
+  def self.user_roles(user)
+    return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")
+  end
 end
 
 # == Schema Information
