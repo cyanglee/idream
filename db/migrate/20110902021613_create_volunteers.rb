@@ -1,6 +1,6 @@
 class CreateVolunteers < ActiveRecord::Migration
   def change
-    create_table :volunteers do |t|
+    create_table :volunteers, :id => false do |t|
       t.integer :user_id, :null => false
       t.integer :job_id, :null => false
       t.timestamps
