@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/binarylogic/settingslogic.git
+  revision: 45197636ba28292e680bd3397fb4d182f6bca688
+  specs:
+    settingslogic (2.0.6)
+
+GIT
   remote: git://github.com/jnicklas/capybara.git
   revision: 9dfe35b43976aeb2e5faae9f9907caffcfd7f3bd
   specs:
@@ -306,6 +312,7 @@ DEPENDENCIES
   rails_admin!
   rspec-rails
   sass
+  settingslogic!
   simple_form
   sqlite3
   uglifier

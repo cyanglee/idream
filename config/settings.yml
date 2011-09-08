@@ -1,0 +1,13 @@
+defaults: &defaults
+  status:
+    pending: "p"
+    approved: "a"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

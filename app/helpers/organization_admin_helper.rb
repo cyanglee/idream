@@ -1,0 +1,2 @@
+module OrganizationAdminHelper
+end

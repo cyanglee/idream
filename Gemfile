@@ -24,6 +24,7 @@ gem "devise"
 gem "cancan"
 gem 'omniauth', '~> 0.2.6'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'

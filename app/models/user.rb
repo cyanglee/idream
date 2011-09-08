@@ -20,31 +20,29 @@ class User < ActiveRecord::Base
   scope :rep, where(:organization => true)
   scope :volunteer, where(:volunteer => true)
 
-
-  has_and_belongs_to_many :organizations
+  #has_and_belongs_to_many :organizations
 
   has_many :jobs
   has_many :volunteers
   has_many :jobs, :through => :volunteers, :dependent => :destroy
-
-  #has_many :assignments
-  #has_many :roles, :through => :assignments, :dependent => :destroy
+  has_many :organization_admins
+  has_many :organizations, :through => :organization_admins, :dependent => :destroy
 
   def has_role?(user, role_sym)
     user.id.nil? ? false : User.where(:id => user.id, role_sym => 1).any?
   end
-
-  def self.role_list
-    @role_list = []
-    for role in Role.all
-      @role_list << role if role.name != 'Admin'
-    end
-    return @role_list
-  end
-
-  def self.user_roles(user)
-    return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")
-  end
+  #
+  #def self.role_list
+  #  @role_list = []
+  #  for role in Role.all
+  #    @role_list << role if role.name != 'Admin'
+  #  end
+  #  return @role_list
+  #end
+  #
+  #def self.user_roles(user)
+  #  return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")
+  #end
 end
 
 # == Schema Information

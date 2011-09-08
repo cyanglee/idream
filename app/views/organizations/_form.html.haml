@@ -16,5 +16,5 @@
   / = radio_button_tag :org, :pick
   #existing_org
     = f.input :id, :label => 'Organization' do
-      = f.select :id, Organization.all.map { |o| [o.name]}, {:include_blank => false}, {:class => "existing_org"}
+      = f.select :id, Organization.all.map { |o| [o.name, o.id]}, {:include_blank => false}, {:class => "existing_org"}
   = f.submit 'Associate'

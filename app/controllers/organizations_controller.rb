@@ -1,10 +1,15 @@
 class OrganizationsController < ApplicationController
+
   def index
     @organizations = Organization.all
   end
 
   def show
     @organization = Organization.find(params[:id])
+  end
+
+  def my
+    @user = current_user.organization_admins
   end
 
   def new
@@ -23,15 +28,13 @@ class OrganizationsController < ApplicationController
       end
     # this is to associate the user with an existing organization
     else
-      @organization = Organization.find(params[:organization][:id])
-      user_ids = []
-      user_ids = @organization.user_ids << current_user.id unless @organization.user_ids.include?(current_user.id)
-      # TODO: update_attribute is not recommended since it doesn't have the validation over the passed in object
-      if @organization.update_attribute(:user_ids, user_ids)
-          redirect_to @organization, :notice => "Successfully updated user."
-      else
-          render :action => 'new'
-      end
+      #@org = Organization.find(params[:organization][:id])
+      #@new_org_admin = @org.organization_admins.build(:user_id => current_user.id, :organization_id => @org.id, :status => Settings.status.pending)
+      #if @new_org_admin.save
+      #    redirect_to my_organizations_path, :notice => "Successfully associated user."
+      #else
+      #    render :action => 'new'
+      #end
     end
 
   end

@@ -9,54 +9,48 @@
 # Add users
 User.delete_all
 User.create!([{
-                  :email => "admin@cyanglee.com",
-                  :password => "123456",
-                  :name => "Admin",
-                  :phone_number => "123-456-789",
-                  :date_of_birth => "1981-7-5",
-                  :zip_code => "11276",
-                  :volunteer => 1,
-                  :organization => 1
+                :email => "admin@cyanglee.com",
+                :password => "123456",
+                :name => "Admin",
+                :phone_number => "123-456-789",
+                :date_of_birth => "1981-7-5",
+                :zip_code => "11276",
+                :volunteer => 1,
+                :organization => 1
               },
               {
-                  :email => "volunteer@cyanglee.com",
-                  :password => "123456",
-                  :name => "Volunteer",
-                  :phone_number => "123-456-789",
-                  :date_of_birth => "1981-7-5",
-                  :zip_code => "11276",
-                  :volunteer => 1
+                :email => "volunteer@cyanglee.com",
+                :password => "123456",
+                :name => "Volunteer",
+                :phone_number => "123-456-789",
+                :date_of_birth => "1981-7-5",
+                :zip_code => "11276",
+                :volunteer => 1
               },
               {
-                  :email => "org@cyanglee.com",
-                  :password => "123456",
-                  :name => "Org",
-                  :phone_number => "123-456-789",
-                  :date_of_birth => "1981-7-5",
-                  :zip_code => "11276",
-                  :organization => 1
+                :email => "org@cyanglee.com",
+                :password => "123456",
+                :name => "Org",
+                :phone_number => "123-456-789",
+                :date_of_birth => "1981-7-5",
+                :zip_code => "11276",
+                :organization => 1
               }
              ])
 
 # Add organizations
 Organization.delete_all
 Organization.create!([{
-                          :name => "abc",
-                          :profile => "abc"
+                        :name => "abc",
+                        :profile => "abc"
                       },
                       {
-                          :name => "cde",
-                          :profile => "cde"
+                        :name => "cde",
+                        :profile => "cde"
                       },
                       {
-                          :name => "fff",
-                          :profile => "fff"
+                        :name => "fff",
+                        :profile => "fff"
                       }
                      ]
 )
-
-# Add roles
-Role.delete_all
-["Volunteer", "Organization", "Admin"].each do |role_name|
-    Role.find_or_create_by_name role_name
-end

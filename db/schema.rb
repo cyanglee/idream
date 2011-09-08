@@ -13,16 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20110902021613) do
 
-  create_table "assignments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
-  add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
-
   create_table "districts", :force => true do |t|
     t.string   "name"
     t.integer  "city_id",    :null => false
@@ -55,15 +45,15 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
   add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
 
   create_table "organization_admins", :id => false, :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "job_id",     :null => false
+    t.integer  "user_id",         :null => false
+    t.integer  "organization_id", :null => false
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "organization_admins", ["job_id"], :name => "index_organization_admins_on_job_id"
-  add_index "organization_admins", ["user_id", "job_id"], :name => "index_organization_admins_on_user_id_and_job_id", :unique => true
+  add_index "organization_admins", ["organization_id"], :name => "index_organization_admins_on_organization_id"
+  add_index "organization_admins", ["user_id", "organization_id"], :name => "index_organization_admins_on_user_id_and_organization_id", :unique => true
   add_index "organization_admins", ["user_id"], :name => "index_organization_admins_on_user_id"
 
   create_table "organizations", :force => true do |t|
@@ -97,14 +87,6 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "name"
