@@ -2,13 +2,9 @@ class OrganizationAdminsController < ApplicationController
 
   before_filter :find_organization_admins, :only => [:show]
 
-  def index
-    #@organization_admin = OrganizationAdmin.all
-
-  end
-
   def new
     @organization_admin = OrganizationAdmin.new
+    @organizations = Organization.eligible_for_user(current_user)
   end
 
   def show

@@ -8,3 +8,4 @@ tmp/
 *.iws
 atlassian-ide-plugin.xml
 .idea/
+.irbrc
