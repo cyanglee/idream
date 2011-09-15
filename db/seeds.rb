@@ -9,8 +9,9 @@
 # Add users
 User.delete_all
 User.create!([{
+                :username => "admin",
                 :email => "admin@cyanglee.com",
-                :password => "123456",
+                :password => "111111",
                 :name => "Admin",
                 :phone_number => "123-456-789",
                 :date_of_birth => "1981-7-5",
@@ -19,8 +20,9 @@ User.create!([{
                 :organization => 1
               },
               {
+                :username => "vol",
                 :email => "volunteer@cyanglee.com",
-                :password => "123456",
+                :password => "111111",
                 :name => "Volunteer",
                 :phone_number => "123-456-789",
                 :date_of_birth => "1981-7-5",
@@ -28,8 +30,9 @@ User.create!([{
                 :volunteer => 1
               },
               {
+                :username => "org",
                 :email => "org@cyanglee.com",
-                :password => "123456",
+                :password => "111111",
                 :name => "Org",
                 :phone_number => "123-456-789",
                 :date_of_birth => "1981-7-5",

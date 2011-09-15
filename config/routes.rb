@@ -2,10 +2,18 @@ Myapp::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "user/registrations"}
 
   # TODO: change the edit route. Don't display the user id in the url. Get the id directly from the session
-  resources :users
+  resources :users do
+    resource :organization_admins, :only => [:show, :new, :destroy]
+    #member do
+    #  get :show_schools
+    #  get :associate_schools
+    #end
+  end
+
   resources :jobs
   resources :organizations
   resources :organization_admins
+  #match 'organization_admins/delete/:id' => 'organization_admins#destroy', :as => 'delete_organization_admins'
 
 
   #match '/admin', :to => 'pages#admin'

@@ -1,44 +1,44 @@
 class JobsController < ApplicationController
-    load_and_authorize_resource
-    #before_filter :authenticate_user!, :except => [:show, :index]
-    
-    def index
-        @jobs = Job.all
-    end
+  load_and_authorize_resource
+  #before_filter :authenticate_user!, :except => [:show, :index]
 
-    def show
-        @job = Job.find(params[:id])
-    end
+  def index
+    @jobs = Job.all
+  end
 
-    def new
-        @job = Job.new
-    end
+  def show
+    @job = Job.find(params[:id])
+  end
 
-    def create
-        @job = current_user.jobs.build(params[:job])
-        if @job.save
-            redirect_to @job, :notice => "Successfully created job."
-        else
-            render :action => 'new'
-        end
-    end
+  def new
+    @job = Job.new
+  end
 
-    def edit
-        @job = Job.find(params[:id])
+  def create
+    @job = current_user.jobs.build(params[:job])
+    if @job.save
+      redirect_to @job, :notice => "Successfully created job."
+    else
+      render :action => 'new'
     end
+  end
 
-    def update
-        @job = Job.find(params[:id])
-        if @job.update_attributes(params[:job])
-            redirect_to @job, :notice  => "Successfully updated job."
-        else
-            render :action => 'edit'
-        end
-    end
+  def edit
+    @job = Job.find(params[:id])
+  end
 
-    def destroy
-        @job = Job.find(params[:id])
-        @job.destroy
-        redirect_to jobs_url, :notice => "Successfully destroyed job."
+  def update
+    @job = Job.find(params[:id])
+    if @job.update_attributes(params[:job])
+      redirect_to @job, :notice => "Successfully updated job."
+    else
+      render :action => 'edit'
     end
+  end
+
+  def destroy
+    @job = Job.find(params[:id])
+    @job.destroy
+    redirect_to jobs_url, :notice => "Successfully destroyed job."
+  end
 end

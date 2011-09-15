@@ -1,5 +1,14 @@
-%p#notice= notice
+- title "Organization Admins"
 
-= link_to 'Edit', edit_organization_admin_path(@organization_admin)
-\|
-= link_to 'Back', organization_admins_path
+%table
+  %tr
+    %th Organization
+    %th Status
+  - for org_admin in @organization_admins
+    %tr
+      %td= org_admin.organization.name
+      %td= org_admin.status
+
+      %td= link_to 'Destroy', org_admin, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "Associate with Organizations", new_user_organization_admins_path(current_user)

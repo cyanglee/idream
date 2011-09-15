@@ -1,9 +1,9 @@
 class CreateOrganizationAdmins < ActiveRecord::Migration
   def change
-    create_table :organization_admins, :id => false do |t|
+    create_table :organization_admins do |t|
       t.integer :user_id, :null => false
       t.integer :organization_id, :null => false
-      t.string :status
+      t.string :status, :default => Settings.status.pending
       t.timestamps
     end
     add_index :organization_admins, :user_id

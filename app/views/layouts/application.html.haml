@@ -30,7 +30,7 @@
                 = link_to "Account Settings", edit_user_path(current_user)
                 |
               - if current_user.try(:organization?)
-                %li= link_to "Manage Organizations", organization_admins_path
+                %li= link_to "Manage Organizations", user_organization_admins_path(current_user)
                 |
             - else
               %li
@@ -68,4 +68,8 @@
 
         #content
           = yield
+
       .span-24 Footer
+    = debug(params) if Rails.env.development?
+
+

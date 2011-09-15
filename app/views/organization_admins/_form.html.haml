@@ -1,4 +1,12 @@
 = simple_form_for @organization_admin do |form|
 
+  -if @organization_admin.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@organization_admin.errors.count, "error")} prohibited this #{OrganizationAdmin.name.titleize} from being saved:"
+      %ul
+        - @organization_admin.errors.full_messages.each do |msg|
+          %li= msg
+
+
   .actions
     = form.button :submit

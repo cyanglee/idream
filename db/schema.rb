@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
   add_index "jobs", ["title"], :name => "index_jobs_on_title"
   add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
 
-  create_table "organization_admins", :id => false, :force => true do |t|
-    t.integer  "user_id",         :null => false
-    t.integer  "organization_id", :null => false
-    t.string   "status"
+  create_table "organization_admins", :force => true do |t|
+    t.integer  "user_id",                          :null => false
+    t.integer  "organization_id",                  :null => false
+    t.string   "status",          :default => "p"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
 
   create_table "users", :force => true do |t|
+    t.string   "username"
     t.string   "name"
     t.string   "phone_number"
     t.date     "date_of_birth"
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["organization"], :name => "index_users_on_organization"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
   add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
   create_table "volunteers", :id => false, :force => true do |t|

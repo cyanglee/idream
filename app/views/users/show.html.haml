@@ -7,7 +7,7 @@
 %p
   %b Role:
   -#= @user.roles.reduce([]) {|result, element| result << element.name}.join(", ")
-  = User.user_roles(current_user)
+  -#= User.user_roles(current_user)
 
 = link_to 'Edit', edit_user_path(@user)
 \|

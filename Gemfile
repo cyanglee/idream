@@ -40,20 +40,21 @@ gem 'growl_notify', :group => [:test, :development]
 gem 'pry', :group => [:test, :development]
 
 group :development do
-    gem 'haml-rails'
-    gem 'nifty-generators'
-    gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
+  gem 'haml-rails'
+  gem 'nifty-generators'
+  gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
+  gem 'hirb'
 end
 
 group :test do
-    gem 'sqlite3'
-    gem 'database_cleaner'
-    gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
-    gem 'factory_girl_rails'
-    gem 'cucumber-rails'
-    gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
-    gem 'mocha'
-    gem 'launchy'
-    gem 'pickle'
-    gem "guard-rspec"  
+  gem 'sqlite3'
+  gem 'database_cleaner'
+  gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
+  gem 'factory_girl_rails'
+  gem 'cucumber-rails'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'mocha'
+  gem 'launchy'
+  gem 'pickle'
+  gem "guard-rspec"
 end

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   #accepts_nested_attributes_for :roles
   # Setup accessible (or protected) attributes for your model
-  # attr_accessible only allows the specified fileds to be created through mass assignment, while attr_protected works the other way around.
+  # attr_accessible only allows the specified fileds to be created through mass assignment, while attr_protected works the opposite way.
   # attr_accessor is used when you want to use a field in the controller or view which is not a field in the db.
   # If attr_accessible or attr_protected is not specified, all fields are open for mass assignment
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
