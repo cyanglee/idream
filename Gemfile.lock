@@ -26,13 +26,6 @@ GIT
       rails (~> 3.1.0.rc1)
 
 GIT
-  remote: https://github.com/Mon-Ouie/pry_debug.git
-  revision: d6b1dbb253860fba42ec7f9c2ae3332d5b60c5b6
-  specs:
-    pry_debug (0.0.1)
-      pry (~> 0.9.0)
-
-GIT
   remote: https://github.com/ctran/annotate_models.git
   revision: c87fa77699754ae38586802b49292c77940ad5b9
   specs:
@@ -316,7 +309,6 @@ DEPENDENCIES
   paperclip
   pickle
   pry
-  pry_debug!
   rails (= 3.1.0.rc6)
   rails3-generators
   rails_admin!

@@ -4,7 +4,7 @@
   = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
   = f.input :title
   = f.input :desc, :label => "Description"
-  = f.association :organization, :include_blank => false
+  = f.association :organization, :collection => current_user.organizations, :include_blank => false
   = f.input :begin_date, :as => :date
   = f.input :end_date, :as => :date
   = f.input :begin_time, :as => :time, :label => "Begin Time (optional)"
