@@ -1,14 +1,18 @@
 - title "Organization Admins"
 
-%table
-  %tr
-    %th Organization
-    %th Status
+%table.zebra-striped
+  %thead
+    %tr
+      %th Organization
+      %th Status
+      %th Action
+
+  %tbody
   - for org_admin in @organization_admins
     %tr
       %td= org_admin.organization.name
       %td= org_admin.status
 
-      %td= link_to 'Destroy', org_admin, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Unaccociate', org_admin, :confirm => 'Are you sure?', :method => :delete
 
 %p= link_to "Associate with Organizations", new_user_organization_admins_path(current_user)

@@ -19,7 +19,7 @@ class OrganizationAdminsController < ApplicationController
         #OrganizationAdmin.new(params[:organization_admin])
     respond_to do |format|
       if @organization_admin.save
-        format.html { redirect_to @organization_admin, notice: 'Organization admin was successfully created.' }
+        format.html { redirect_to @organization_admin, :flash => { :success => 'Organization admin was successfully created.'}}
         format.json { render json: @organization_admin, status: :created, location: @organization_admin }
       else
         format.html { render action: "new" }

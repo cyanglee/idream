@@ -16,6 +16,6 @@
                             :order => [:day, :month, :year]
     = f.input :phone_number, :as => :tel
     = f.input :zip_code
-    = f.button :submit, "Sign up"
+    = f.submit "Sign up", :class => 'btn primary'
 
 = render :partial => "devise/shared/links"

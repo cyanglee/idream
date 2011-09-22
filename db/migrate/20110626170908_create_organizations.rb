@@ -13,6 +13,7 @@ class CreateOrganizations < ActiveRecord::Migration
             t.timestamps
         end
 
+        add_index :organizations, :id
         add_index :organizations, :name
         add_index :organizations, :contact
         add_index :organizations, :creator

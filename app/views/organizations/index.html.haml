@@ -1,8 +1,10 @@
 - title "Organizations"
 
-%table
-  %tr
-    %th Name
+%table.zebra-striped
+  %thead
+    %tr
+      %th Name
+  %tbody
   - for organization in @organizations
     %tr
       %td= organization.name
