@@ -29,12 +29,21 @@ test:
   host: localhost
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: myapp_production
-  pool: 5
-  username: rails
-  password:
-  host: localhost
+  encoding: unicode
+  adapter: postgresql
+  username: mtcwgaovxb
+  port: 5432
+  host: ec2-107-20-155-144.compute-1.amazonaws.com
+  database: mtcwgaovxb
+  password: MtuBheS-s6xKN0HWE3yF
+
+#production:
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: myapp_production
+#  pool: 5
+#  username: rails
+#  password:
+#  host: localhost
 
