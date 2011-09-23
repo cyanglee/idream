@@ -37,8 +37,7 @@
                 %li= link_to "Sign in", new_user_session_path
 
               - if current_user.try(:admin?)
-                %li
-                  = link_to "Admin", "/admin"
+                -#%li= link_to "Admin", "/admin"
           - if user_signed_in?
             %a.greeting
               Hi,

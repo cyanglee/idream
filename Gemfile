@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '~> 3.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -23,8 +23,10 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "devise"
 gem "cancan"
 gem 'omniauth', '~> 0.2.6'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
+
+# for heroku
 gem 'execjs'
 gem 'therubyracer'
 

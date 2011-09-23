@@ -1,2 +1,2 @@
 $(document).ready ->
-  $("div#[id^='flash_']").fadeOut(5000)
+  $("div#[id^='flash_']").fadeOut(4000)

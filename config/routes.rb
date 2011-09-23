@@ -17,7 +17,7 @@ Myapp::Application.routes.draw do
 
 
   #match '/admin', :to => 'pages#admin'
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:
