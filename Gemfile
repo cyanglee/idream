@@ -29,6 +29,7 @@ gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 # for heroku
 gem 'execjs'
 gem 'therubyracer'
+gem 'pg'
 
 # Use unicorn as the web server
 # gem 'unicorn'
