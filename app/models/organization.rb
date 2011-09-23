@@ -10,8 +10,8 @@ class Organization < ActiveRecord::Base
   def self.eligible_for_user(user)
     ids_to_exclude = user.organization_ids
     org_table = Arel::Table.new(:organizations)
-
-    self.where(org_table[:id].not_in ids_to_exclude)
+    
+    if ids_to_exclude.empty? then self.order(org_table[:name]) else self.where(org_table[:id].not_in ids_to_exclude) end
   end
 
 end
