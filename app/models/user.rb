@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # The main reason scopes are better than plain class methods is that they can be chained with other methods, so that, e.g.
   # User.admin.paginate(:page => 1)
   scope :admin, where(:admin => true)
-  scope :rep, where(:organization => true)
+  scope :org_admin, where(:organization => true)
   scope :volunteer, where(:volunteer => true)
 
   #has_and_belongs_to_many :organizations
@@ -28,17 +28,10 @@ class User < ActiveRecord::Base
   has_many :organization_admins
   has_many :organizations, :through => :organization_admins, :dependent => :destroy
 
-  def has_role?(user, role_sym)
-    user.id.nil? ? false : User.where(:id => user.id, role_sym => 1).any?
+  def has_role?(user, role)
+    user.id.nil? ? false : User.where(:id => user.id, role => true).any?
   end
-  #
-  #def self.role_list
-  #  @role_list = []
-  #  for role in Role.all
-  #    @role_list << role if role.name != 'Admin'
-  #  end
-  #  return @role_list
-  #end
+    
   #
   #def self.user_roles(user)
   #  return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")
