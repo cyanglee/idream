@@ -12,9 +12,10 @@ User.create!([{
                 :username => "admin",
                 :email => "admin@cyanglee.com",
                 :password => "111111",
-                :name => "Admin",
+                :first_name => "Admin",
+                :last_name => "Ssytem",
                 :phone_number => "123-456-789",
-                :date_of_birth => "1981-7-5",
+                :birth_year => "1981",
                 :zip_code => "11276",
                 :volunteer => 1,
                 :organization => 1
@@ -23,9 +24,10 @@ User.create!([{
                 :username => "vol",
                 :email => "volunteer@cyanglee.com",
                 :password => "111111",
-                :name => "Volunteer",
+                :first_name => "Volunteer",
+                :last_name => "Worker",
                 :phone_number => "123-456-789",
-                :date_of_birth => "1981-7-5",
+                :birth_year => "1981",
                 :zip_code => "11276",
                 :volunteer => 1
               },
@@ -33,9 +35,10 @@ User.create!([{
                 :username => "org",
                 :email => "org@cyanglee.com",
                 :password => "111111",
-                :name => "Org",
+                :first_name => "Org",
+                :last_name => "Admin",
                 :phone_number => "123-456-789",
-                :date_of_birth => "1981-7-5",
+                :birth_year => "1981",
                 :zip_code => "11276",
                 :organization => 1
               }

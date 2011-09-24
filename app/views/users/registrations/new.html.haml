@@ -1,21 +1,22 @@
-%h2 Sign up
+= title("Sign up")
 
-#user_details
 = simple_form_for @user do |f|
-    = devise_error_messages!
-    = check_box_tag 'user[volunteer]', "1", true, :class => 'boolean optional'
-    = label_tag 'Vounteer'
-    = check_box_tag 'user[organization]', "1", false, :class => 'boolean optional'
-    = label_tag 'organization'
-    = f.input :email
-    = f.input :password, :as => :password
-    = f.input :password_confirmation, :as => :password
-    = f.input :name
-    = f.input :date_of_birth, :as => :date, :start_year => Date.today.year - 60,
-                            :end_year => Date.today.year - 12,
-                            :order => [:day, :month, :year]
-    = f.input :phone_number, :as => :tel
-    = f.input :zip_code
-    = f.submit "Sign up", :class => 'btn primary'
+  .clearfix
+    .input
+      %ul.inputs-list
+        %li= f.input :volunteer, :label => "Voluntter"
+        %li= f.input :organization, :label => "School Admin"
+        %li= f.input :email
+        %li= f.input :username
+        %li= f.input :password, :as => :password
+        %li= f.input :password_confirmation, :as => :password
+        -#%li= f.input :first_name
+        -#%li= f.input :last_name
+        -#%li= f.input :birth_year
+        -#%li= f.input :phone_number, :as => :tel
+        -#%li= f.input :zip_code
 
-= render :partial => "devise/shared/links"
+    .actions
+      %p= f.submit "Sign in", :class => 'btn primary'
+
+-#= render :partial => "devise/shared/links"

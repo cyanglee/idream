@@ -2,9 +2,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       t.string :username
-      t.string :name
+      t.string :first_name
+      t.string :last_name
       t.string :phone_number
-      t.date :date_of_birth
+      t.integer :birth_year
       t.string :zip_code
       t.boolean :volunteer
       t.boolean :organization
@@ -13,7 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
-      # t.confirmable
+      t.confirmable
       # t.encryptable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
@@ -23,7 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :username, :unique => true
     add_index :users, :email, :unique => true
     add_index :users, :reset_password_token, :unique => true
-    # add_index :users, :confirmation_token,   :unique => true
+    add_index :users, :confirmation_token,   :unique => true
     add_index :users, :volunteer
     add_index :users, :organization
     add_index :users, :admin

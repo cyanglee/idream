@@ -20,17 +20,20 @@
           .nav
             %ul
               - if user_signed_in?
-                %li= link_to "Sign out", destroy_user_session_path
-                %li= link_to "Profile", edit_user_path(current_user)
+
+                %li= link_to "Find Volunteer Jobs", jobs_path
                 %li.dropdown{"data-dropdown" => "dropdown"}
                   %a.dropdown-toggle
                     Manage Jobs
                   %ul.dropdown-menu
                     - if user_signed_in? and can? :create, Job
                       %li= link_to "Post Volunteer Jobs", new_job_path
-                    %li= link_to "Find Volunteer Jobs", jobs_path
+
                 - if current_user.try(:organization?)
                   %li= link_to "Manage Organizations", user_organization_admins_path(current_user)
+
+                %li= link_to "User Profile", edit_user_path(current_user)
+                %li= link_to "Sign out", destroy_user_session_path
 
               - else
                 %li= link_to "Sign up", new_user_registration_path
@@ -41,10 +44,8 @@
           - if user_signed_in?
             %a.greeting
               Hi,
-              = current_user.name
+              = current_user.first_name
               !
-
-
 
     .container
       .content

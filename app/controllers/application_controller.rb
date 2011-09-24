@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
   before_filter :find_user
 
   # redirect to the root page if the user doesn't have the permission to acccess that section of the site

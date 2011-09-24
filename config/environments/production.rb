@@ -5,14 +5,14 @@ Myapp::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
   # Compress both stylesheets and JavaScripts
-  config.assets.js_compressor  = :uglifier
+  config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :scss
 
   # Specifies the header that your server uses for sending files
@@ -49,4 +49,21 @@ Myapp::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # TODO: need to change the domain name to the real domain name
+  # For Devise
+  config.action_mailer.default_url_options = { :host => 'idream.heroku.com' }
+
+  # TODO: need to change the smtp settings to the real one
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => "587",
+      :domain => "gmail.com",
+      :authentication => "plain",
+      :user_name => "admin@cyanglee.com",
+      :password => "a9311697",
+      :enable_starttls_auto => true
+  }
+
+
 end
