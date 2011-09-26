@@ -1,11 +1,9 @@
 class PagesController < ApplicationController
-    def home
+  def home
 
-    end
+  end
 
-#    def admin
-#        if !current_user.try(:admin?)
-#            redirect_to root_path
-#        end
-#    end
+  def confirmation
+    render "confirmation"
+  end
 end

@@ -19,9 +19,8 @@
           = link_to "iDream", root_path, :class => "brand"
           .nav
             %ul
+              %li= link_to "Browse Volunteer Jobs", jobs_path
               - if user_signed_in?
-
-                %li= link_to "Find Volunteer Jobs", jobs_path
                 %li.dropdown{"data-dropdown" => "dropdown"}
                   %a.dropdown-toggle
                     Manage Jobs
@@ -40,7 +39,7 @@
                 %li= link_to "Sign in", new_user_session_path
 
               - if current_user.try(:admin?)
-                -#%li= link_to "Admin", "/admin"
+                %li= link_to "Admin", "#"
           - if user_signed_in?
             %a.greeting
               Hi,
@@ -53,3 +52,5 @@
           - flash.each do |name, msg|
             = content_tag :div, msg, :id => "flash_#{name}", :class => "alert-message #{name}" unless msg.blank?
           = yield
+      -#%footer
+        © iDream team 2011

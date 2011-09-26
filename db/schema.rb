@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
     t.string   "category"
     t.string   "contact"
     t.integer  "creator"
+    t.boolean  "active",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"

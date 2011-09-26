@@ -40,9 +40,14 @@ gem 'pg'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'rspec-rails', :group => [:test, :development]
-gem 'growl_notify', :group => [:test, :development]
-gem 'pry', :group => [:test, :development]
+group :development, :test do
+  gem 'rb-fsevent'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'rspec-rails'
+  gem 'growl_notify'
+  gem 'pry'
+end
 
 group :development do
   gem 'haml-rails'

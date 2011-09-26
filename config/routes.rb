@@ -1,5 +1,5 @@
 Myapp::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "user/registrations"}
+  devise_for :users, :controllers => {:confirmations => "confirmations"}
 
   # TODO: change the edit route. Don't display the user id in the url. Get the id directly from the session
   resources :users do
@@ -18,6 +18,7 @@ Myapp::Application.routes.draw do
 
   #match '/admin', :to => 'pages#admin'
   #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  match 'pages/confirmation', :to => 'pages#confirmation'
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:

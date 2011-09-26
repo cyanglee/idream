@@ -4,10 +4,13 @@
   .clearfix
     .input
       %ul.inputs-list
-        %li= f.input :volunteer, :label => "Voluntter"
-        %li= f.input :organization, :label => "School Admin"
-        %li= f.input :email
+        %li
+          = f.input :volunteer, :label => "Voluntter"
+          = f.input :organization, :label => "School Admin"
+        %li= f.input :first_name
+        %li= f.input :last_name
         %li= f.input :username
+        %li= f.input :email
         %li= f.input :password, :as => :password
         %li= f.input :password_confirmation, :as => :password
         -#%li= f.input :first_name
@@ -17,6 +20,6 @@
         -#%li= f.input :zip_code
 
     .actions
-      %p= f.submit "Sign in", :class => 'btn primary'
+      %p= f.submit "Sign up", :class => 'btn primary'
 
 -#= render :partial => "devise/shared/links"

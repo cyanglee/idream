@@ -7,19 +7,12 @@ feature "JobCrud" do
 
     scenario "test org admin CRUD a new job" do
         # user login as an org admin
-        user = Factory(:org_admin)
-        visit new_user_session_path
-        within("#content") do
-            fill_in 'Email', :with => user.email
-            fill_in 'Password', :with => user.password
-        end
-        click_button('Sign in')
-
-        page.should have_content('Signed in successfully')
-        page.should have_content('Post Volunteer Works')
+        user = Factory(:org_admin)    
+        sign_in_user(user)    
+        page.should have_content('Post Volunteer Jobs')
 
         # create a new job
-        click_link('Post Volunteer Works')
+        click_link('Post Volunteer Jobs')
         fill_in 'Title', :with => "test title"
         fill_in 'Description', :with => "test desc"
         click_button('Create Job')

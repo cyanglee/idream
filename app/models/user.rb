@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   def has_role?(user, role)
     user.id.nil? ? false : User.where(:id => user.id, role => true).any?
   end
-    
+
   #
   #def self.user_roles(user)
   #  return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")

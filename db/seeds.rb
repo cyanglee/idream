@@ -8,55 +8,64 @@
 
 # Add users
 User.delete_all
-User.create!([{
-                :username => "admin",
-                :email => "admin@cyanglee.com",
-                :password => "111111",
-                :first_name => "Admin",
-                :last_name => "Ssytem",
-                :phone_number => "123-456-789",
-                :birth_year => "1981",
-                :zip_code => "11276",
-                :volunteer => 1,
-                :organization => 1
-              },
-              {
-                :username => "vol",
-                :email => "volunteer@cyanglee.com",
-                :password => "111111",
-                :first_name => "Volunteer",
-                :last_name => "Worker",
-                :phone_number => "123-456-789",
-                :birth_year => "1981",
-                :zip_code => "11276",
-                :volunteer => 1
-              },
-              {
-                :username => "org",
-                :email => "org@cyanglee.com",
-                :password => "111111",
-                :first_name => "Org",
-                :last_name => "Admin",
-                :phone_number => "123-456-789",
-                :birth_year => "1981",
-                :zip_code => "11276",
-                :organization => 1
-              }
-             ])
+User.create!([
+  {
+    :username => "admin",
+    :email => "admin@cyanglee.com",
+    :password => "111111",
+    :first_name => "Admin",
+    :last_name => "Ssytem",
+    :phone_number => "123-456-789",
+    :birth_year => "1981",
+    :zip_code => "11276",
+    :volunteer => 1,
+    :organization => 1
+  },
+  {
+    :username => "vol",
+    :email => "volunteer@cyanglee.com",
+    :password => "111111",
+    :first_name => "Volunteer",
+    :last_name => "Worker",
+    :phone_number => "123-456-789",
+    :birth_year => "1981",
+    :zip_code => "11276",
+    :volunteer => 1
+  },
+  {
+    :username => "org",
+    :email => "org@cyanglee.com",
+    :password => "111111",
+    :first_name => "Org",
+    :last_name => "Admin",
+    :phone_number => "123-456-789",
+    :birth_year => "1981",
+    :zip_code => "11276",
+    :organization => 1
+  }
+])
+
+# clear all the confirmation token
+User.all.each do |user|
+  user.update_attributes(:confirmation_token => nil, :confirmed_at => Time.now)
+end
 
 # Add organizations
 Organization.delete_all
-Organization.create!([{
-                        :name => "abc",
-                        :profile => "abc"
-                      },
-                      {
-                        :name => "cde",
-                        :profile => "cde"
-                      },
-                      {
-                        :name => "fff",
-                        :profile => "fff"
-                      }
-                     ]
-)
+Organization.create!([
+  {
+    :name => "abc",
+    :profile => "abc",
+    :active => true
+  },
+  {
+    :name => "cde",
+    :profile => "cde",
+    :active => true
+  },
+  {
+    :name => "fff",
+    :profile => "fff",
+    :active => true
+  }
+])

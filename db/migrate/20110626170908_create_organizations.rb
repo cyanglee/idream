@@ -10,6 +10,7 @@ class CreateOrganizations < ActiveRecord::Migration
             t.string :category
             t.string :contact
             t.integer :creator
+            t.boolean :active, :null => false
             t.timestamps
         end
 

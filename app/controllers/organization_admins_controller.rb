@@ -1,5 +1,5 @@
 class OrganizationAdminsController < ApplicationController
-
+  load_and_authorize_resource
   before_filter :find_organization_admins, :only => [:show]
 
   def new
