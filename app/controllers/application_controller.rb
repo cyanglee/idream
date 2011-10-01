@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :find_user
+  #before_filter :set_locale
 
   # redirect to the root page if the user doesn't have the permission to acccess that section of the site
   rescue_from CanCan::AccessDenied do |exception|
@@ -12,7 +13,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
   def find_user
     @user = current_user
   end
+
+  #def set_locale
+  #  I18n.locale = "zh-TW"
+  #end
+
 end

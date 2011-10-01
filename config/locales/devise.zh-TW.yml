@@ -15,8 +15,10 @@ zh-TW:
       timeout: '您的登入時效過期，請重新登入，才能繼續。'
       inactive: '您的帳號尚未被啟用。'
     sessions:
-      signed_in: '成功登入了。'
-      signed_out: '成功登出了。'
+      user:
+        signed_in: '成功登入了。'
+        signed_out: '成功登出了。'
+        remember_me: 保持我的登入狀態
     passwords:
       send_instructions: '您將在幾分鐘後收到一封電子郵件，內有重新設定密碼的步驟說明。'
       updated: '您的密碼已被修改，而您現在已重新登入。'
@@ -37,3 +39,8 @@ zh-TW:
         subject: '重設密碼步驟'
       unlock_instructions:
         subject: '解鎖步驟'
+    links:
+      sign_in: 登入
+      sign_up: 註冊
+      forgot_password: 忘記密碼?
+      resend_confirmation_instruction: 重新寄送帳號啟用資訊?

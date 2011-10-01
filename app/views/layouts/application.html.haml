@@ -19,24 +19,25 @@
           = link_to "iDream", root_path, :class => "brand"
           .nav
             %ul
-              %li= link_to "Browse Volunteer Jobs", jobs_path
+              %li= link_to t("ui.navigation.job.browse_jobs"), jobs_path
               - if user_signed_in?
-                %li.dropdown{"data-dropdown" => "dropdown"}
+                - if user_signed_in? and can? :create, Job
+                  %li= link_to t("ui.navigation.job.post_jobs"), new_job_path
+                -#%li.dropdown{"data-dropdown" => "dropdown"}
                   %a.dropdown-toggle
-                    Manage Jobs
+                    = t("ui.navigation.job.manage_jobs")
                   %ul.dropdown-menu
-                    - if user_signed_in? and can? :create, Job
-                      %li= link_to "Post Volunteer Jobs", new_job_path
+
 
                 - if current_user.try(:organization?)
-                  %li= link_to "Manage Organizations", user_organization_admins_path(current_user)
+                  %li= link_to t("ui.navigation.manage_schools"), user_organization_admins_path(current_user)
 
-                %li= link_to "User Profile", edit_user_path(current_user)
-                %li= link_to "Sign out", destroy_user_session_path
+                %li= link_to t("ui.navigation.profile"), edit_user_path(current_user)
+                %li= link_to t("ui.navigation.sign_out"), destroy_user_session_path
 
               - else
-                %li= link_to "Sign up", new_user_registration_path
-                %li= link_to "Sign in", new_user_session_path
+                %li= link_to t("ui.navigation.sign_up"), new_user_registration_path
+                %li= link_to t("ui.navigation.sign_in"), new_user_session_path
 
               - if current_user.try(:admin?)
                 %li= link_to "Admin", "#"

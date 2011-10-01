@@ -5,10 +5,11 @@
     .input
       %ul.inputs-list
         %li
-          = f.input :volunteer, :label => "Voluntter"
-          = f.input :organization, :label => "School Admin"
-        %li= f.input :first_name
-        %li= f.input :last_name
+          = f.input :volunteer, :label => t("simple_form.labels.user.volunteer")
+          = f.input :organization, :label => t("simple_form.labels.user.school_admin")
+        %li
+          = f.input :first_name
+          = f.input :last_name
         %li= f.input :username
         %li= f.input :email
         %li= f.input :password, :as => :password
@@ -20,6 +21,6 @@
         -#%li= f.input :zip_code
 
     .actions
-      %p= f.submit "Sign up", :class => 'btn primary'
+      %p= f.submit t("ui.navigation.sign_up"), :class => 'btn primary'
 
 -#= render :partial => "devise/shared/links"

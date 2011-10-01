@@ -2,6 +2,19 @@
 # by tsechingho (http://github.com/tsechingho)
 
 zh-TW:
+  ui:
+    navigation:
+      sign_up: 註冊
+      sign_in: 登入
+      sign_out: 登出
+      account: 帳號
+      manage_schools: 管理學校資訊
+      profile: 管理個人檔案
+      job:
+        manage_jobs: 管理志工工作
+        browse_jobs: 瀏覽志工機會
+        post_jobs: 刊登志工工作
+
   date:
     formats:
       default: "%Y-%m-%d"
