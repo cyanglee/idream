@@ -1,3 +1,4 @@
+// bootstrap overwrite
 .content
   margin-top: 50px
 
@@ -12,6 +13,8 @@
 .nav
   float: right !important
 
+// end of bootstrap overwrite
+
 .greeting
   font-size: 1em
   float: right
@@ -24,7 +27,15 @@
   text-decoration: none
 
 .simple_form
-  .inputs-list
-    margin: 0
-    padding: 0
-    display: inline !important
+  margin: 0
+  padding: 0
+
+  .inputs-list li
+    margin-left: 120px
+
+  label
+    padding-right: 10px
+
+.devise_links
+  text-align: center
+  margin: 15px auto 15px auto

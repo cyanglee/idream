@@ -1,24 +1,40 @@
-= title("Sign up")
+-#= title("Sign up")
+#fb-root
+-#%script
+-#  (function(d, s, id) {
+-#  var js, fjs = d.getElementsByTagName(s)[0];
+-#  if (d.getElementById(id)) {return;}
+-#  js = d.createElement(s); js.id = id;
+-#  js.src = "//connect.facebook.net/en_US/all.js#appId=288917501118379&xfbml=1";
+-#  fjs.parentNode.insertBefore(js, fjs);
+-#  }(document, 'script', 'facebook-jssdk'));
+
+-#.fb-login-button{"data-show-faces" => "true", "data-width" => "200", "data-max-rows" => "1"}
+
+= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
 
 = simple_form_for @user do |f|
   .clearfix
-    .input
-      %ul.inputs-list
-        %li
-          = f.input :volunteer, :label => t("simple_form.labels.user.volunteer")
-          = f.input :organization, :label => t("simple_form.labels.user.school_admin")
-        %li
-          = f.input :first_name
-          = f.input :last_name
-        %li= f.input :username
-        %li= f.input :email
-        %li= f.input :password, :as => :password
-        %li= f.input :password_confirmation, :as => :password
-        -#%li= f.input :first_name
-        -#%li= f.input :last_name
-        -#%li= f.input :birth_year
-        -#%li= f.input :phone_number, :as => :tel
-        -#%li= f.input :zip_code
+    %ul.inputs-list
+      %li
+        %label
+          = f.check_box :volunteer
+          %span= t("simple_form.labels.user.volunteer")
+      %li
+        %label
+          = f.check_box :organization
+          %span= t("simple_form.labels.user.organization")
+    = f.input :last_name
+    = f.input :first_name
+    = f.input :username
+    = f.input :email
+    = f.input :password, :as => :password
+    = f.input :password_confirmation, :as => :password
+    -#%li= f.input :first_name
+    -#%li= f.input :last_name
+    -#%li= f.input :birth_year
+    -#%li= f.input :phone_number, :as => :tel
+    -#%li= f.input :zip_code
 
     .actions
       %p= f.submit t("ui.navigation.sign_up"), :class => 'btn primary'

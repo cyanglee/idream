@@ -1,12 +1,17 @@
 = simple_form_for @user do |f|
-  = f.error_messages
-  = f.input :email
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :birth_year
-  = f.input :phone_number, :as => :tel
-  = f.input :zip_code
-  = f.input :password, :as => :password
-  = f.input :password_confirmation, :as => :password
-  = f.button :submit
+  .clearfix
+    = f.error_messages
+    = f.input :email
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :gender, :collection => ['男', '女'], :as => :select
+    = f.input :birth_year
+    = f.input :phone_number, :as => :tel
+    = f.input :zip_code
+    = f.input :degree, :collection => ['中學以下', '高中, 高職', '專科', '大學', '研究所'], :as => :select
+    = f.input :skills
+    = f.input :password, :as => :password
+    = f.input :password_confirmation, :as => :password
+    .actions
+      = f.submit t("ui.user_profile.update")
   

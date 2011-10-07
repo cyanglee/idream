@@ -33,7 +33,7 @@ gem 'therubyracer'
 gem 'pg'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'rspec-rails'
-  gem 'growl_notify'
+  gem 'growl'
   gem 'pry'
 end
 
@@ -67,5 +67,6 @@ group :test do
   gem 'mocha'
   gem 'launchy'
   gem 'pickle'
-  gem "guard-rspec"
+  gem "spork", "> 0.9.0.rc"
+  gem "guard-spork"
 end

@@ -23,7 +23,7 @@ Myapp::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   # for Devise
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
   silence_warnings do
     begin
@@ -32,5 +32,4 @@ Myapp::Application.configure do
     rescue LoadError
     end
   end
-
 end

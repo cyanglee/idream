@@ -1,5 +1,7 @@
 Myapp::Application.routes.draw do
-  devise_for :users, :controllers => {:confirmations => "confirmations"}
+  devise_for :users, :controllers => {:confirmations => "confirmations", :omniauth_callbacks => "users/omniauth_callbacks"} do
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  end
 
   # TODO: change the edit route. Don't display the user id in the url. Get the id directly from the session
   resources :users do

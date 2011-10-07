@@ -9,12 +9,12 @@ feature "JobCrud" do
         # user login as an org admin
         user = Factory(:org_admin)    
         sign_in_user(user)    
-        page.should have_content('Post Volunteer Jobs')
+        page.should have_content I18n.t('ui.navigation.job.post_jobs')
 
         # create a new job
         click_link('Post Volunteer Jobs')
-        fill_in 'Title', :with => "test title"
-        fill_in 'Description', :with => "test desc"
+        fill_in 'job_title', :with => "test title"
+        fill_in 'job_description', :with => "test desc"
         click_button('Create Job')
 
         page.should have_content('Successfully created job')

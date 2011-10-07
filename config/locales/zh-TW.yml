@@ -13,8 +13,9 @@ zh-TW:
       job:
         manage_jobs: 管理志工工作
         browse_jobs: 瀏覽志工機會
-        post_jobs: 刊登志工工作
-
+        post_jobs: 登錄志工工作
+    user_profile:
+        update: 更新個人檔案
   date:
     formats:
       default: "%Y-%m-%d"
@@ -207,7 +208,7 @@ zh-TW:
         confirmation: "不符合確認值"
         accepted: "必須是可被接受的"
         empty: "不能留空"
-        blank: "不能是空白字元"
+        blank: "不能是空白"
         too_long: "過長（最長是 %{count} 個字）"
         too_short: "過短（最短是 %{count} 個字）"
         wrong_length: "字數錯誤（必須是 %{count} 個字）"

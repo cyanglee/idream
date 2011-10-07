@@ -9,3 +9,4 @@ tmp/
 atlassian-ide-plugin.xml
 .idea/
 .irbrc
+*.ids

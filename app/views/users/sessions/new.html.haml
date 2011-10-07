@@ -1,11 +1,15 @@
-= title("Sign in")
+-#= title("Sign in")
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   .clearfix
-    .input
+    = f.input :username
+    = f.input :password, :as => :password
+    - if devise_mapping.rememberable?
       %ul.inputs-list
-        %li= f.input :username
-        %li= f.input :password, :as => :password
-        - if devise_mapping.rememberable?
-          %li= f.input :remember_me, :as => :boolean, :label => t("devise.sessions.user.remember_me")
-        %li= f.submit t("devise.links.sign_in")
-= render :partial => "/users/shared/links"
+        %li
+          %label
+            = f.check_box :remember_me
+            %span= t("devise.sessions.user.remember_me")
+
+    = render :partial => "/users/shared/links"
+    .actions
+      = f.submit t("devise.links.sign_in")

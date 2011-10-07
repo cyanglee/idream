@@ -6,7 +6,7 @@ module UserHelper
         fill_in 'user_username', :with => user.username
         fill_in 'user_password', :with => user.password
     end
-    click_button('Sign in')
+    click_button I18n.t("ui.navigation.sign_in")
 
     page.should have_content("Hi, #{user.first_name}")
   end

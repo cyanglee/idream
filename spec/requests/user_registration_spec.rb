@@ -19,10 +19,10 @@ feature "UserRegistration" do
          fill_in 'user_password', :with => @user.password
          fill_in 'user_password_confirmation', :with => @user.password
       end
-      click_button('Sign up')
-      
+      click_button I18n.t('ui.navigation.sign_up')
+
       # verify the page is redirected to the correct page
-      page.should have_content("You have signed up successfully")
+      page.should have_content(I18n.t("devise.registrations.inactive_signed_up"))
       # verify the email has been sent
       last_email.nil?.should == false
       # verify recipient
@@ -34,13 +34,13 @@ feature "UserRegistration" do
       
       visit matches[1]
       # verify the cofirmation message
-      page.should have_content("Your account was successfully confirmed")
+      page.should have_content I18n.t("devise.confirmations.confirmed")
       # verify the identify as a volunteer
-      page.should have_content("Browse Volunteer Jobs")
-      page.should_not have_content("Post Volunteer Jobs")
+      page.should have_content I18n.t("ui.navigation.job.browse_jobs")
+      page.should_not have_content I18n.t("ui.navigation.job.post_jobs")
     end
     
-    scenario "test user registers as an org admin" do
+    scenario "test user registers as a school admin" do
       # sign up as a volunteer
       visit new_user_registration_path
       within(".content") do
@@ -52,10 +52,10 @@ feature "UserRegistration" do
          fill_in 'user_password', :with => @user.password
          fill_in 'user_password_confirmation', :with => @user.password
       end
-      click_button('Sign up')
+      click_button I18n.t('ui.navigation.sign_up')
       
       # verify the page is redirected to the correct page
-      page.should have_content("You have signed up successfully")
+      page.should have_content(I18n.t("devise.registrations.inactive_signed_up"))
       # verify the email has been sent
       last_email.nil?.should == false
       # verify recipient
@@ -67,12 +67,11 @@ feature "UserRegistration" do
       
       visit matches[1]
       # verify the cofirmation message
-      page.should have_content("Your account was successfully confirmed")
+      page.should have_content I18n.t("devise.confirmations.confirmed")
       # verify the identify as a volunteer
-      page.should have_content("Manage Organizations")
+      page.should have_content I18n.t("ui.navigation.manage_schools")
       
       # verify the redirect path
-      binding.pry
       user = User.find_by_email(@user.email)
       current_path.should == user_organization_admins_path(user)
     end

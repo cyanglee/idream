@@ -32,38 +32,25 @@ class User < ActiveRecord::Base
     user.id.nil? ? false : User.where(:id => user.id, role => true).any?
   end
 
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token['extra']['user_hash']
+    if user = User.find_by_email(data["email"])
+      user
+    else # Create a user with a stub password.
+      User.create(:email => data["email"], :password => Devise.friendly_token[0, 20], :confirmation_token => nil, :confirmed_at => Time.now)
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
+        user.email = data["email"]
+      end
+    end
+  end
+
   #
   #def self.user_roles(user)
   #  return user.roles.reduce([]) { |result, element| result << element.name }.join(", ")
   #end
 end
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer(4)      not null, primary key
-#  first_name             :string(255)
-#  last_name              :string(255)
-#  phone_number           :string(255)
-#  birth_day              :integer(4)
-#  birth_month            :integer(4)
-#  birth_year             :integer(4)
-#  zip_code               :string(255)
-#  volunteer              :boolean(1)
-#  org                    :boolean(1)
-#  admin                  :boolean(1)
-#  email                  :string(255)     default(""), not null
-#  encrypted_password     :string(128)     default(""), not null
-#  reset_password_token   :string(255)
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer(4)      default(0)
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string(255)
-#  last_sign_in_ip        :string(255)
-#  created_at             :datetime
-#  updated_at             :datetime
-#
-

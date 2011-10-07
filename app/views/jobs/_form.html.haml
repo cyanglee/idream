@@ -1,15 +1,16 @@
 = simple_form_for @job do |f|
-  = f.error_messages
-  / = f.association :user, :collection => [current_user], :label_method => :email, :value_method => :id
-  = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
-  = f.input :title
-  = f.input :desc, :label => "Description"
-  = f.association :organization, :collection => current_user.organizations, :include_blank => false
-  = f.input :begin_date, :as => :date
-  = f.input :end_date, :as => :date
-  = f.input :begin_time, :as => :time, :label => "Begin Time (optional)"
-  = f.input :end_time, :as => :time, :label => "End Time (optional)"
-  = f.button :submit
+  .clearfix
+    = f.error_messages
+    / = f.association :user, :collection => [current_user], :label_method => :email, :value_method => :id
+    = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+    = f.input :title
+    = f.input :desc, :label => "Description"
+    = f.association :organization, :collection => current_user.organizations, :include_blank => false
+    = f.input :begin_date, :as => :date
+    = f.input :end_date, :as => :date
+    -#= f.input :begin_time, :as => :time, :label => "Begin Time (optional)"
+    -#= f.input :end_time, :as => :time, :label => "End Time (optional)"
+    = f.button :submit
 
 -## == Schema Information
 -##

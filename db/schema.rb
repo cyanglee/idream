@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110902021613) do
+ActiveRecord::Schema.define(:version => 20111007200645) do
 
   create_table "districts", :force => true do |t|
     t.string   "name"
@@ -115,6 +115,9 @@ ActiveRecord::Schema.define(:version => 20110902021613) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "degree"
+    t.text     "skills"
+    t.string   "gender"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
