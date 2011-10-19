@@ -16,6 +16,7 @@ zh-TW:
         zip_code: 郵遞區號
         degree: 教育程度 
         skills: 專長
+        gender: 性別
       job:
         organization: 學校名稱
         description: 工作內容

@@ -1,6 +1,5 @@
 !!!
-%html
-
+%html{"xmlns:fb"=>"http://www.facebook.com/2008/fbml"}
   %head
     %title
       = yield(:title) || "Untitled"
@@ -43,9 +42,10 @@
                 %li= link_to "Admin", "#"
           - if user_signed_in?
             %a.greeting
-              Hi,
-              = current_user.first_name
-              !
+              - if !current_user.first_name.nil?
+                Hi,
+                = current_user.first_name
+                !
 
     .container
       .content

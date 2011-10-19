@@ -46,4 +46,6 @@ zh-TW:
       forgot_password: 忘記密碼?
       resend_confirmation_instruction: 重新寄送帳號啟用資訊?
     omniauth_callbacks:
+      user:
+        failure: "%{reason}"
       success: 成功

@@ -14,7 +14,7 @@ User.create!([
     :email => "admin@cyanglee.com",
     :password => "111111",
     :first_name => "Admin",
-    :last_name => "Ssytem",
+    :last_name => "System",
     :phone_number => "123-456-789",
     :birth_year => "1981",
     :zip_code => "11276",

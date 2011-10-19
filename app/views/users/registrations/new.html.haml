@@ -1,20 +1,39 @@
 -#= title("Sign up")
+
 #fb-root
--#%script
--#  (function(d, s, id) {
--#  var js, fjs = d.getElementsByTagName(s)[0];
--#  if (d.getElementById(id)) {return;}
--#  js = d.createElement(s); js.id = id;
--#  js.src = "//connect.facebook.net/en_US/all.js#appId=288917501118379&xfbml=1";
--#  fjs.parentNode.insertBefore(js, fjs);
--#  }(document, 'script', 'facebook-jssdk'));
-
--#.fb-login-button{"data-show-faces" => "true", "data-width" => "200", "data-max-rows" => "1"}
-
-= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+:javascript
+  window.fbAsyncInit = function() {
+    FB.init({appId: '288917501118379', status: true, cookie: true,xfbml: true});
+    FB.Canvas.setAutoResize( 100 );
+    FB.getLoginStatus(function(o) {
+      if (!o && o.status) return;
+      if (o.status == 'connected') {
+          console.log(o.status);
+          //window.location = "http://localhost.com:3000/users/auth/facebook";
+      } else if (o.status == 'notConnected') {
+          // USER IS LOGGED IN TO FACEBOOK (BUT HASN'T AUTHORIZED YOUR APP YET)
+      } else if(FB._userStatus == "unknown") {
+          // USER NOT CURRENTLY LOGGED IN TO FACEBOOK
+      }
+    });
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/zh_TW/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
 
 = simple_form_for @user do |f|
   .clearfix
+    = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), {:style=>"float: left; margin: 10px 50px 0 0"}
+    %iframe{"src"=>"http://www.facebook.com/plugins/facepile.php?app_id=288917501118379", "scrolling"=>"no", "frameborder"=>"0", "style"=>"border:none;overflow:hidden; width:300px;", "allowTransparency"=>"true"}
+    -#.fb-login-button{"data-show-faces" => "true", "data-width" => "200", "data-max-rows" => "1"}
+    -#%fb:login-button{"registration-url"=>"http://www.google.com"}
+    -#%fb:registration{"fields"=>"[{'name':'name'}, {'name':'first_name'}, {'name':'email'},
+    -#        {'name':'favorite_car','description':'What is your favorite car?',
+    -#        'type':'text'}]", "redirect-uri"=>"http://localhost.com:3000/users/auth/facebook"}
+    %hr
     %ul.inputs-list
       %li
         %label

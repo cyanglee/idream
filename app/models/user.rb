@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     if user = User.find_by_email(data["email"])
       user
     else # Create a user with a stub password.
-      User.create(:email => data["email"], :password => Devise.friendly_token[0, 20], :confirmation_token => nil, :confirmed_at => Time.now)
+      User.create(:email => data["email"], :password => Devise.friendly_token[0, 20], :volunteer => 1, :gender => self.translate_gender(data["gender"]), :confirmation_token => nil, :confirmed_at => Time.now)
     end
   end
 
@@ -46,6 +46,16 @@ class User < ActiveRecord::Base
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
         user.email = data["email"]
       end
+    end
+  end
+
+  private
+
+  def self.translate_gender(gender)
+    if (gender == "male")
+      I18n.t("ui.gender.male")
+    else
+      I18n.t("ui.gender.female")
     end
   end
 

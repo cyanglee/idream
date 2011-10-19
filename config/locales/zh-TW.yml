@@ -16,6 +16,9 @@ zh-TW:
         post_jobs: 登錄志工工作
     user_profile:
         update: 更新個人檔案
+    gender:
+      male: 男
+      female: 女
   date:
     formats:
       default: "%Y-%m-%d"
