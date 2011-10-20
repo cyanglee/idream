@@ -1,0 +1,25 @@
+zh-TW:
+  simple_form:
+    labels:
+      user:
+        volunteer: 志工
+        volunteer_group: 志工團體
+        organization: 學校負責人
+        first_name: 名
+        last_name: 姓
+        email: 電子信箱地址
+        password: 密碼
+        password_confirmation: 確認密碼
+        username: 使用者名稱
+        birth_year: 出生年
+        phone_number: 電話號碼
+        zip_code: 郵遞區號
+        degree: 教育程度 
+        skills: 專長
+        gender: 性別
+      job:
+        organization: 學校名稱
+        description: 工作內容
+
+    hints:
+    placeholders:
