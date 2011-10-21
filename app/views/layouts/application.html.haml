@@ -32,6 +32,7 @@
                   %li= link_to t("ui.navigation.manage_schools"), user_organization_admins_path(current_user)
 
                 %li= link_to t("ui.navigation.profile"), edit_user_path(current_user)
+
                 %li= link_to t("ui.navigation.sign_out"), destroy_user_session_path
 
               - else
