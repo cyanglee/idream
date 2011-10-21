@@ -2,7 +2,6 @@
 FactoryGirl.define do
   factory :volunteer, :class => User do
     sequence(:email) { |n| "foo#{n}@example.com" }
-    sequence(:username) { |n| "foo#{n}" }
     sequence(:first_name) { |n| "volunteer#{n}" }
     sequence(:last_name) { |n| "worker#{n}" }
     password "111111"
@@ -11,7 +10,6 @@ FactoryGirl.define do
 
   factory :org_admin, :class => User do
     sequence(:email) { |n| "foo#{n}@example.com" }
-    sequence(:username) { |n| "foo#{n}" }
     sequence(:first_name) { |n| "org#{n}" }
     sequence(:last_name) { |n| "admin#{n}" }
     password "111111"
@@ -20,7 +18,6 @@ FactoryGirl.define do
 
   factory :admin, :class => User do
     sequence(:email) { |n| "foo#{n}@example.com" }
-    sequence(:username) { |n| "foo#{n}" }
     sequence(:first_name) { |n| "admin#{n}" }
     sequence(:last_name) { |n| "system#{n}" }
     password "111111"

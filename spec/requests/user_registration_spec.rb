@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 feature "UserRegistration" do
-  
     before(:each) do
       @user = mock('User')
       @user.stub!(:first_name => "test", :last_name => "user", :email => "test@example.com", :username => "foo", :password => "111111")
@@ -14,7 +13,6 @@ feature "UserRegistration" do
          check 'user_volunteer'
          fill_in 'user_first_name', :with => @user.first_name
          fill_in 'user_last_name', :with => @user.last_name
-         fill_in 'user_username', :with => @user.username
          fill_in 'user_email', :with => @user.email
          fill_in 'user_password', :with => @user.password
          fill_in 'user_password_confirmation', :with => @user.password
@@ -47,7 +45,6 @@ feature "UserRegistration" do
          check 'user_organization'
          fill_in 'user_first_name', :with => @user.first_name
          fill_in 'user_last_name', :with => @user.last_name
-         fill_in 'user_username', :with => @user.username
          fill_in 'user_email', :with => @user.email
          fill_in 'user_password', :with => @user.password
          fill_in 'user_password_confirmation', :with => @user.password

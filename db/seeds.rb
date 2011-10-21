@@ -10,7 +10,6 @@
 User.delete_all
 User.create!([
   {
-    :username => "admin",
     :email => "admin@cyanglee.com",
     :password => "111111",
     :first_name => "Admin",
@@ -22,7 +21,6 @@ User.create!([
     :organization => 1
   },
   {
-    :username => "vol",
     :email => "volunteer@cyanglee.com",
     :password => "111111",
     :first_name => "Volunteer",
@@ -33,7 +31,6 @@ User.create!([
     :volunteer => 1
   },
   {
-    :username => "org",
     :email => "org@cyanglee.com",
     :password => "111111",
     :first_name => "Org",

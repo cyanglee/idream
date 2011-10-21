@@ -27,19 +27,19 @@ gem 'omniauth', '~> 0.2.6'
 gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 gem 'rails-i18n'
 
-# for heroku
-gem 'execjs'
-gem 'therubyracer'
-gem 'pg'
-
 # Use unicorn as the web server
-gem 'unicorn'
+#gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+group :production do
+  gem 'execjs'
+  gem 'therubyracer'
+  gem 'pg'
+end
 
 group :development, :test do
   gem 'rb-fsevent'
@@ -62,7 +62,6 @@ group :test do
   gem 'database_cleaner'
   gem 'rails3-generators' #mainly for factory_girl & simple_form at this point
   gem 'factory_girl_rails'
-  gem 'cucumber-rails'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'mocha'
   gem 'launchy'

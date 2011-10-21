@@ -45,6 +45,8 @@ Spork.prefork do
     config.include(MailerMacros)
     config.before(:each) { reset_email }
     config.include(UserHelper)
+
+    OmniAuth.config.test_mode = true
   end
 
 end

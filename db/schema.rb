@@ -77,21 +77,7 @@ ActiveRecord::Schema.define(:version => 20111007200645) do
   add_index "organizations", ["id"], :name => "index_organizations_on_id"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
 
-  create_table "rails_admin_histories", :force => true do |t|
-    t.string   "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
-
   create_table "users", :force => true do |t|
-    t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
@@ -125,7 +111,6 @@ ActiveRecord::Schema.define(:version => 20111007200645) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["organization"], :name => "index_users_on_organization"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
   add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
   create_table "volunteers", :id => false, :force => true do |t|
