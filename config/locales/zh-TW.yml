@@ -2,14 +2,21 @@
 # by tsechingho (http://github.com/tsechingho)
 
 zh-TW:
+  message:
+    user:
+      successfully_updated: 成功更新個人檔案
+      wrong_phone_number: 電話號碼格式有誤
   ui:
+    general:
+      pending: 審核中
+      approved: 已確認
     navigation:
       sign_up: 註冊
       sign_in: 登入
       sign_out: 登出
       account: 帳號
-      manage_schools: 管理學校資訊
-      profile: 管理個人檔案
+      manage_schools: 我的學校
+      profile: 個人資訊
       job:
         manage_jobs: 管理志工工作
         browse_jobs: 瀏覽志工機會
@@ -19,6 +26,14 @@ zh-TW:
     gender:
       male: 男
       female: 女
+    school:
+      name: 學校名稱
+      status: 審核狀態
+      action: 操作
+      associate: 選擇我的學校
+      unassociate: 移除學校負責人
+      delete: 已將我移除學校負責人
+      add: 已成為學校負責人
   date:
     formats:
       default: "%Y-%m-%d"

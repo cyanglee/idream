@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       # This makes the User object null and that's why the Cancan error message comes out.
       # The solution is to sign in the user again before the redirect.
       sign_in(user_to_update, :bypass => true)
-      redirect_to user_to_update, :notice => "Successfully updated user."
+      redirect_to edit_user_path(user_to_update), :notice => t("message.user.successfully_updated")
     else
       render :action => 'edit'
     end

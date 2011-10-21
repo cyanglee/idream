@@ -1,5 +1,5 @@
 - title "Associate with Schools"
 
 = simple_form_for @organization_admin do |f|
-  = f.association :organization, :collection => @organizations, :as => :select, :include_blank => false, :label => "Select a school :"
-  = f.submit 'Associate'
+  = f.association :organization, :collection => @organizations, :as => :select, :include_blank => false, :label => t("ui.school.name") + " : "
+  = f.submit t("ui.school.action")

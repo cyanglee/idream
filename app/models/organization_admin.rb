@@ -6,5 +6,4 @@ class OrganizationAdmin < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, :scope => :organization_id,
                           :message => "has already associated with the organization"
-
 end

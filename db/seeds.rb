@@ -14,7 +14,7 @@ User.create!([
     :password => "111111",
     :first_name => "Admin",
     :last_name => "System",
-    :phone_number => "123-456-789",
+    :home_phone => "123-456-789",
     :birth_year => "1981",
     :zip_code => "11276",
     :volunteer => 1,
@@ -25,7 +25,7 @@ User.create!([
     :password => "111111",
     :first_name => "Volunteer",
     :last_name => "Worker",
-    :phone_number => "123-456-789",
+    :home_phone => "123-456-789",
     :birth_year => "1981",
     :zip_code => "11276",
     :volunteer => 1
@@ -35,7 +35,7 @@ User.create!([
     :password => "111111",
     :first_name => "Org",
     :last_name => "Admin",
-    :phone_number => "123-456-789",
+    :home_phone => "123-456-789",
     :birth_year => "1981",
     :zip_code => "11276",
     :organization => 1

@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
   has_many :organization_admins
   has_many :organizations, :through => :organization_admins, :dependent => :destroy
 
+  validates_format_of :home_phone,
+      :message => I18n.t("message.user.wrong_phone_number"),
+      :with => /^\d{2,3}-\d{3,4}-\d{4}$/
+  validates_format_of :cell_phone,
+      :message => I18n.t("message.user.wrong_phone_number"),
+      :with => /^\d{10}$/
+
+
   def has_role?(user, role)
     user.id.nil? ? false : User.where(:id => user.id, role => true).any?
   end

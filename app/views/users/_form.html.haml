@@ -5,12 +5,13 @@
     = f.input :last_name
     = f.input :gender, :collection => ['男', '女'], :as => :select
     = f.input :birth_year, :collection => (Date.today.year - 90)..(Date.today.year - 12)
-    = f.input :phone_number, :as => :tel
+    = f.input :home_phone, :as => :tel, :input_html => { :placeholder => "範例: 02-1234-5678" }
+    = f.input :cell_phone, :as => :tel, :input_html => { :placeholder => "範例: 0910123456" }
     = f.input :zip_code
-    = f.input :degree, :collection => ['中學以下', '高中, 高職', '專科', '大學', '研究所'], :as => :select
+    = f.input :degree, :collection => ['中學以下', '高中, 高職', '專科', '大學', '研究所'].reverse, :as => :select
     = f.input :skills
-    = f.input :password, :as => :password
-    = f.input :password_confirmation, :as => :password
+    -#= f.input :password, :as => :password
+    -#= f.input :password_confirmation, :as => :password
     .actions
       = f.submit t("ui.user_profile.update")
   
