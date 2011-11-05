@@ -26,14 +26,19 @@ zh-TW:
     gender:
       male: 男
       female: 女
+    education:
+      high_school: 高中, 高職
+      college: 大學
+      grad_school: 研究所
     school:
       name: 學校名稱
       status: 審核狀態
       action: 操作
-      associate: 選擇我的學校
+      associate: 新增我的學校
       unassociate: 移除學校負責人
       delete: 已將我移除學校負責人
       add: 已成為學校負責人
+      add_new: 新增
   date:
     formats:
       default: "%Y-%m-%d"

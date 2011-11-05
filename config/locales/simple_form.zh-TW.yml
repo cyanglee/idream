@@ -19,8 +19,10 @@ zh-TW:
         skills: 專長
         gender: 性別
       job:
+        title: 工作名稱
         organization: 學校名稱
-        description: 工作內容
+        desc: 工作內容
+        add: 登錄工作
 
     hints:
     placeholders:

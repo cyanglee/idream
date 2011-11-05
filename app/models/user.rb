@@ -42,10 +42,22 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
+
     if user = User.find_by_email(data["email"])
       user
-    else # Create a user with a stub password.
-      User.create(:email => data["email"], :password => Devise.friendly_token[0, 20], :volunteer => 1, :gender => self.translate_gender(data["gender"]), :confirmation_token => nil, :confirmed_at => Time.now)
+    else
+      birth_year = if data['birthday'].nil? or data['birthday'].empty? then "" else data['birthday'].split("/").last end
+      education = if data['education'].last["type"].nil? or data['education'].last["type"].empty? then "" else data['education'].last["type"] end
+
+      # Create a user with a stub password.
+      User.create(:email => data["email"],
+                  :password => Devise.friendly_token[0, 20],
+                  :volunteer => 1,
+                  :gender => Translator.new(data["gender"]).gender,
+                  :birth_year => birth_year,
+                  :degree => Translator.new(education).education,
+                  :confirmation_token => nil,
+                  :confirmed_at => Time.now)
     end
   end
 
@@ -58,14 +70,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def self.translate_gender(gender)
-    if (gender == "male")
-      I18n.t("ui.gender.male")
-    else
-      I18n.t("ui.gender.female")
-    end
-  end
 
   #
   #def self.user_roles(user)

@@ -26,6 +26,7 @@ gem 'omniauth', '~> 0.2.6'
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 gem 'rails-i18n'
+gem 'rest-graph'
 
 # Use unicorn as the web server
 #gem 'unicorn'
@@ -48,6 +49,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'growl'
   gem 'pry'
+  gem 'faker'
+  gem 'awesome_print'
 end
 
 group :development do

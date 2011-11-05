@@ -56,6 +56,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.4)
     arel (2.2.1)
+    awesome_print (0.4.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     cancan (1.6.7)
@@ -91,6 +92,8 @@ GEM
     factory_girl_rails (1.2.0)
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
+    faker (1.0.1)
+      i18n (~> 0.4)
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
@@ -233,6 +236,7 @@ GEM
     rdoc (3.9.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rest-graph (2.0.0)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -292,6 +296,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate!
+  awesome_print
   bcrypt-ruby
   cancan
   capybara!
@@ -300,6 +305,7 @@ DEPENDENCIES
   devise
   execjs
   factory_girl_rails
+  faker
   growl
   guard-livereload
   guard-rspec
@@ -322,6 +328,7 @@ DEPENDENCIES
   rails-i18n
   rails3-generators
   rb-fsevent
+  rest-graph
   rspec-rails
   sass
   settingslogic!

@@ -182,10 +182,14 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   if Rails.env == "development" or Rails.env == "test"
-    config.omniauth :facebook, "288917501118379", "727f1d29d16800cbb87cdaa214feedad"
+    app_id = "288917501118379"
+    app_secret = "727f1d29d16800cbb87cdaa214feedad"
   else
-    config.omniauth :facebook, "286321918059347", "cf0f20622ec13507b7c7961de0fc4fd2"
+    app_id = "286321918059347"
+    app_secret = "cf0f20622ec13507b7c7961de0fc4fd2"
   end
+
+  config.omniauth :facebook, app_id, app_secret, {:scope => 'email, user_birthday, user_education_history'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

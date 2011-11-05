@@ -1,4 +1,5 @@
 defaults: &defaults
+  access_token: "AAAEGxNkGB6sBANaIs48iLuZA7t63fDRYvVZAKCbzpEWNZAv9jIvHhLEZCeK5BiH9ZC1HW3aPJBCtUJe6wDVCnJb5CnBClNGgZD"
   status:
     pending: "p"
     approved: "a"

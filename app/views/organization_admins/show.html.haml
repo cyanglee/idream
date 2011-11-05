@@ -1,19 +1,19 @@
 - title "Organization Admins"
 
-- if !@organization_admins.empty?
-  %table.zebra-striped
-    %thead
-      %tr
-        %th=t("ui.school.name")
-        %th=t("ui.school.status")
-        %th=t("ui.school.action")
+%table.zebra-striped
+  %thead
+    %tr
+      %th=t("ui.school.name")
+      %th=t("ui.school.status")
+      %th=t("ui.school.action")
 
-    %tbody
-    - for org_admin in @organization_admins
-      %tr
-        %td= org_admin.organization.name
-        %td= translate_status(org_admin.status)
+  %tbody
+  - for org_admin in @organization_admins
+    %tr
+      %td= org_admin.organization.name
+      %td= translate_status(org_admin.status)
 
-        %td= link_to t("ui.school.unassociate"), org_admin, :confirm => 'Are you sure?', :method => :delete
+      -#%td= link_to t("ui.school.unassociate"), user_organization_admins_path(org_admin), :confirm => '確定移除?', :method => :delete
+      %td= button_to t("ui.school.unassociate"), org_admin, :method=>:delete, :class=>:destroy
 
 %p= button_to t("ui.school.associate"), new_user_organization_admins_path(current_user), :class => "primary btn", :method => :get

@@ -2,4 +2,4 @@
 
 = simple_form_for @organization_admin do |f|
   = f.association :organization, :collection => @organizations, :as => :select, :include_blank => false, :label => t("ui.school.name") + " : "
-  = f.submit t("ui.school.action")
+  = f.submit t("ui.school.add_new")
