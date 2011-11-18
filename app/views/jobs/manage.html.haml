@@ -1,0 +1,42 @@
+%table
+  %thead
+    %tr
+      %th= t("simple_form.labels.job.title")
+      %th= t("simple_form.labels.job.desc")
+      %th= t("simple_form.labels.job.school_name")
+      %th= t("simple_form.labels.job.period")
+      %th= t("simple_form.labels.job.begin_date")
+      %th= t("simple_form.labels.job.end_date")
+      %th= t("simple_form.labels.job.action")
+  %tbody
+  - for job in @jobs
+    %tr
+      %td= job.title
+      %td= truncate(job.desc, :length => 80)
+      %td= job.organization.name
+      %td= job.period
+      %td= job.begin_date
+      %td= job.end_date
+      %td
+        = link_to t("simple_form.labels.job.edit"), edit_job_path(job)
+        |
+        = link_to t("simple_form.labels.job.applicant"), "#", :class => "show_applicant", :id => "job_#{job.id}"
+      - if !job.volunteer_jobs.empty?
+        %tr.volunteer_jobs{:id => "applicants_#{job.id}"}
+          %td{:colspan => '7'}
+            %table.bordered-table.zebra-striped
+              %thead
+                %tr
+                  %th= t("simple_form.labels.user.name")
+                  %th= t("simple_form.labels.user.gender")
+                  %th= t("simple_form.labels.user.email")
+                  %th= t("simple_form.labels.user.home_phone")
+                  %th= t("simple_form.labels.user.cell_phone")
+              %tbody
+              - for volunteer_job in job.volunteer_jobs
+                %tr
+                  %td= volunteer_job.user.full_name
+                  %td= volunteer_job.user.gender
+                  %td= volunteer_job.user.email
+                  %td= volunteer_job.user.home_phone
+                  %td= volunteer_job.user.cell_phone

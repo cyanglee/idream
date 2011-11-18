@@ -2,8 +2,10 @@ class Job < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
 
-  has_many :volunteers
+  has_many :volunteer_jobs
   has_many :users, :through => :volunteers
+
+  accepts_nested_attributes_for :volunteer_jobs
 end
 # == Schema Information
 #

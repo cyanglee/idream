@@ -1,0 +1,40 @@
+- title "Jobs"
+
+%table.zebra-striped
+  %tr
+    %th=t("simple_form.labels.job.title")
+    %td=@job.title
+  %tr
+    %th=t("simple_form.labels.job.school_name")
+    %td=@job.organization.name
+  %tr
+    %th=t("simple_form.labels.job.period")
+    %td=@job.period
+  %tr
+    %th=t("simple_form.labels.job.begin_date")
+    %td=@job.begin_date
+  %tr
+    %th=t("simple_form.labels.job.end_date")
+    %td=@job.end_date
+  %tr
+    %th=t("simple_form.labels.job.requirement")
+    %td=@job.requirement
+  %tr
+    %th=t("simple_form.labels.job.desc")
+    %td=@job.desc
+  %tr
+    %th=t("simple_form.labels.job.contact")
+    %td=@job.contact
+  %tr
+    %th=t("simple_form.labels.job.contact_email")
+    %td=@job.contact_email
+  %tr
+    %th=t("simple_form.labels.job.contact_phone")
+    %td=@job.contact_phone
+  %tr
+    %td
+      = simple_form_for @job, :url => user_volunteer_jobs_path(@job), :method => :post do |f|
+        = f.input :id, :as => :hidden, :input_html => { :name => 'job[job_id]' }
+        = f.submit t("simple_form.labels.job.apply")
+    %td
+

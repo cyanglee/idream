@@ -1,4 +1,5 @@
 class OrganizationsController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @organizations = Organization.all
@@ -46,7 +47,7 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
     if @organization.update_attributes(params[:organization])
-      redirect_to @organization, :notice  => "Successfully updated organization."
+      redirect_to user_organization_admins_path(current_user), :flash => {:success => t("ui.school.successfully_updated")}
     else
       render :action => 'edit'
     end

@@ -18,9 +18,11 @@ zh-TW:
       manage_schools: 我的學校
       profile: 個人資訊
       job:
-        manage_jobs: 管理志工工作
-        browse_jobs: 瀏覽志工機會
-        post_jobs: 登錄志工工作
+        all_jobs: 義工工作
+        my_jobs: 我的工作
+        manage_jobs: 管理工作
+        browse_jobs: 瀏覽志工工作
+        post_jobs: 登錄工作
     user_profile:
         update: 更新個人檔案
     gender:
@@ -33,12 +35,19 @@ zh-TW:
     school:
       name: 學校名稱
       status: 審核狀態
-      action: 操作
+      action: 選項
       associate: 新增我的學校
       unassociate: 移除學校負責人
       delete: 已將我移除學校負責人
       add: 已成為學校負責人
       add_new: 新增
+      edit: 編輯我的學校
+      submit: 確認
+      successfully_updated: 成功更新學校檔案
+    job:
+      successfully_applied: 已申請並通知學校負責人
+      successfully_cancelled: 已成功取消申請
+      delete: 取消申請
   date:
     formats:
       default: "%Y-%m-%d"

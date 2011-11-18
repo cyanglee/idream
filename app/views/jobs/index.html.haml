@@ -3,24 +3,24 @@
 %table.zebra-striped
   %thead
     %tr
-      %th Title
-      %th Description
-      %th Organization
-      %th Start Date
-      %th End Date
-      %th Action
+      %th= t("simple_form.labels.job.title")
+      %th= t("simple_form.labels.job.desc")
+      %th= t("simple_form.labels.job.school_name")
+      %th= t("simple_form.labels.job.period")
+      %th= t("simple_form.labels.job.begin_date")
+      %th= t("simple_form.labels.job.end_date")
+      %th= t("simple_form.labels.job.action")
   %tbody
   - for job in @jobs
     %tr
       %td= job.title
-      %td= job.desc
+      %td= truncate(job.desc, :length => 80)
       %td= job.organization.name
+      %td= job.period
       %td= job.begin_date
       %td= job.end_date
+      %td= link_to t("simple_form.labels.job.show"), job
 
-      %td= link_to 'Show', job
-      / %td= link_to 'Edit', edit_job_path(job)
-      / %td= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete
 
-- if current_user.try(:organization?)
-  %p= link_to "New Job", new_job_path
+- if is_school_admin?
+  %p= link_to t("simple_form.labels.job.add_new"), new_job_path, :class => "primary btn"

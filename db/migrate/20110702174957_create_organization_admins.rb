@@ -3,7 +3,7 @@ class CreateOrganizationAdmins < ActiveRecord::Migration
     create_table :organization_admins do |t|
       t.integer :user_id, :null => false
       t.integer :organization_id, :null => false
-      t.string :status, :default => Settings.status.pending
+      t.string :status, :default => Settings.status.pending, :null => false
       t.timestamps
     end
     add_index :organization_admins, :user_id

@@ -16,13 +16,13 @@ gem 'uglifier'
 gem 'jquery-rails'
 
 gem 'haml'
-gem 'paperclip'
 gem 'mime-types'
 gem 'simple_form'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "devise"
 gem "cancan"
-gem 'omniauth', '~> 0.2.6'
+gem "omniauth"
+gem "omniauth-facebook"
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 gem 'rails-i18n'

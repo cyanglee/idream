@@ -2,11 +2,16 @@ class JobsController < ApplicationController
   load_and_authorize_resource
   #before_filter :authenticate_user!, :except => [:show, :index]
 
+  def manage
+    @jobs = Job.find_all_by_user_id(current_user.id)
+  end
+
   def index
     @jobs = Job.all
   end
 
   def show
+    @volunteer_job = VolunteerJob.new
     @job = Job.find(params[:id])
   end
 

@@ -17,7 +17,7 @@ namespace :db do
                      {
                          :email => "volunteer@cyanglee.com",
                          :password => "111111",
-                         :first_name => "Volunteer",
+                         :first_name => "VolunteerJob",
                          :last_name => "Worker",
                          :birth_year => "1981",
                          :zip_code => "11276",

@@ -14,12 +14,12 @@ class Ability
 
     if user.has_role? user, :volunteer
       can :read, Job
-      can [:edit, :update, :show], User
+      can [:edit, :update, :show], User, :id => user.id
     end
 
     if user.has_role? user, :organization
       can :manage, Job, :user_id => user.id
-      can [:edit, :update, :show], User, :user_id => user.id
+      can [:edit, :update, :show], User, :id => user.id
       can :manage, OrganizationAdmin, :user_id => user.id
     end
   end

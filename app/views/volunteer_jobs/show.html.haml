@@ -1,0 +1,23 @@
+- if @volunteer_jobs.empty?
+  %div.empty-message="目前無已申請的義工工作"
+- else
+  %table.zebra-striped
+    %thead
+      %tr
+        %th= t("simple_form.labels.job.title")
+        %th= t("simple_form.labels.job.school_name")
+        %th= t("simple_form.labels.job.period")
+        %th= t("simple_form.labels.job.begin_date")
+        %th= t("simple_form.labels.job.end_date")
+        %th= t("simple_form.labels.job.status")
+        %th= t("simple_form.labels.job.action")
+    %tbody
+    - for volunteer_job in @volunteer_jobs
+      %tr
+        %td= volunteer_job.job.title
+        %td= volunteer_job.job.organization.name
+        %td= volunteer_job.job.period
+        %td= volunteer_job.job.begin_date
+        %td= volunteer_job.job.end_date
+        %td= translate_status(volunteer_job.status)
+        %td= button_to t("ui.job.delete"), volunteer_job, :method=>:delete, :class=>:destroy, :confirm => '確定取消?'

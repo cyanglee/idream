@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   # If attr_accessible or attr_protected is not specified, all fields are open for mass assignment
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
   attr_protected :admin
+  attr_writer :full_name
 
   # the scope will return all the users based on the given criteria. e.g. User.admin would return an array of all the site admins.
   # The main reason scopes are better than plain class methods is that they can be chained with other methods, so that, e.g.
@@ -23,8 +24,8 @@ class User < ActiveRecord::Base
   #has_and_belongs_to_many :organizations
 
   has_many :jobs
-  has_many :volunteers
-  has_many :jobs, :through => :volunteers, :dependent => :destroy
+  has_many :volunteer_jobs
+  has_many :jobs, :through => :volunteer_jobs, :dependent => :destroy
   has_many :organization_admins
   has_many :organizations, :through => :organization_admins, :dependent => :destroy
 
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
 
-    if user = User.find_by_email(data["email"])
+    if user.email == User.find_by_email(data["email"]).email
       user
     else
       birth_year = if data['birthday'].nil? or data['birthday'].empty? then "" else data['birthday'].split("/").last end
@@ -63,10 +64,14 @@ class User < ActiveRecord::Base
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
+      if session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
         user.email = data["email"]
       end
     end
+  end
+
+  def full_name
+    [first_name, last_name].join(' ')
   end
 
   private

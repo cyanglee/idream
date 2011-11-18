@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007200645) do
+ActiveRecord::Schema.define(:version => 20111118171222) do
 
   create_table "districts", :force => true do |t|
     t.string   "name"
@@ -30,14 +30,16 @@ ActiveRecord::Schema.define(:version => 20111007200645) do
     t.text     "location"
     t.text     "requirement"
     t.string   "contact"
-    t.integer  "hours"
-    t.string   "hours_period"
     t.date     "begin_date"
     t.date     "end_date"
     t.time     "begin_time"
     t.time     "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contact_phone"
+    t.string   "contact_email"
+    t.string   "education"
+    t.string   "period"
   end
 
   add_index "jobs", ["organization_id"], :name => "index_jobs_on_organization_id"
@@ -70,12 +72,20 @@ ActiveRecord::Schema.define(:version => 20111007200645) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "webpage"
   end
 
   add_index "organizations", ["contact"], :name => "index_organizations_on_contact"
   add_index "organizations", ["creator"], :name => "index_organizations_on_creator"
   add_index "organizations", ["id"], :name => "index_organizations_on_id"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
+
+  create_table "school_admin_jobs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
@@ -114,15 +124,16 @@ ActiveRecord::Schema.define(:version => 20111007200645) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
-  create_table "volunteers", :id => false, :force => true do |t|
+  create_table "volunteer_jobs", :id => false, :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "job_id",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
-  add_index "volunteers", ["job_id"], :name => "index_volunteers_on_job_id"
-  add_index "volunteers", ["user_id", "job_id"], :name => "index_volunteers_on_user_id_and_job_id", :unique => true
-  add_index "volunteers", ["user_id"], :name => "index_volunteers_on_user_id"
+  add_index "volunteer_jobs", ["job_id"], :name => "index_volunteers_on_job_id"
+  add_index "volunteer_jobs", ["user_id", "job_id"], :name => "index_volunteers_on_user_id_and_job_id", :unique => true
+  add_index "volunteer_jobs", ["user_id"], :name => "index_volunteers_on_user_id"
 
 end

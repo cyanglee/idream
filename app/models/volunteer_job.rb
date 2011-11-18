@@ -1,4 +1,4 @@
-class Volunteer < ActiveRecord::Base
+class VolunteerJob < ActiveRecord::Base
     belongs_to :user
     belongs_to :job
 end

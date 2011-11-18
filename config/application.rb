@@ -63,5 +63,6 @@ module Myapp
     %w(middleware).each do |dir|
         config.autoload_paths << "#{config.root}/app/#{dir}"
     end
+
   end
 end

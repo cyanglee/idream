@@ -20,15 +20,16 @@
             %ul
               %li= link_to t("ui.navigation.job.browse_jobs"), jobs_path
               - if user_signed_in?
-                - if user_signed_in? and can? :create, Job
-                  %li= link_to t("ui.navigation.job.post_jobs"), new_job_path
-                -#%li.dropdown{"data-dropdown" => "dropdown"}
+                %li.dropdown{"data-dropdown" => "dropdown"}
                   %a.dropdown-toggle
-                    = t("ui.navigation.job.manage_jobs")
+                    = t("ui.navigation.job.all_jobs")
                   %ul.dropdown-menu
+                    %li= link_to t("ui.navigation.job.my_jobs"), user_volunteer_jobs_path(current_user)
+                    - if is_school_admin?
+                      %li= link_to t("ui.navigation.job.manage_jobs"), jobs_manage_path
+                      %li= link_to t("ui.navigation.job.post_jobs"), new_job_path
 
-
-                - if current_user.try(:organization?)
+                - if is_school_admin?
                   %li= link_to t("ui.navigation.manage_schools"), user_organization_admins_path(current_user)
 
                 %li= link_to t("ui.navigation.profile"), edit_user_path(current_user)
@@ -39,14 +40,8 @@
                 %li= link_to t("ui.navigation.sign_up"), new_user_registration_path
                 %li= link_to t("ui.navigation.sign_in"), new_user_session_path
 
-              - if current_user.try(:admin?)
+              - if is_admin?
                 %li= link_to "Admin", "#"
-          - if user_signed_in?
-            %a.greeting
-              - if !current_user.first_name.nil?
-                Hi,
-                = current_user.first_name
-                !
 
     .container
       .content

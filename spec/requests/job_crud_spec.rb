@@ -12,7 +12,7 @@ feature "JobCrud" do
         page.should have_content I18n.t('ui.navigation.job.post_jobs')
 
         # create a new job
-        click_link('Post Volunteer Jobs')
+        click_link('Post VolunteerJob Jobs')
         fill_in 'job_title', :with => "test title"
         fill_in 'job_description', :with => "test desc"
         click_button('Create Job')

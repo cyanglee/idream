@@ -12,8 +12,10 @@
     %tr
       %td= org_admin.organization.name
       %td= translate_status(org_admin.status)
+      %td.school_actions
+        = link_to t("ui.school.edit"), edit_organization_path(org_admin.organization), :class => "primary btn"
+        = button_to t("ui.school.unassociate"), org_admin, :method=>:delete, :class=>:destroy, :confirm => '確定移除?'
 
-      -#%td= link_to t("ui.school.unassociate"), user_organization_admins_path(org_admin), :confirm => '確定移除?', :method => :delete
-      %td= button_to t("ui.school.unassociate"), org_admin, :method=>:delete, :class=>:destroy
+
 
 %p= button_to t("ui.school.associate"), new_user_organization_admins_path(current_user), :class => "primary btn", :method => :get

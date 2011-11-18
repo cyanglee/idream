@@ -1,5 +1,22 @@
 # coding: utf-8
 module ApplicationHelper
+
+  def is_school_admin?
+    can? :create, Job || current_user.try(:organization?)
+  end
+
+  def is_admin?
+    current_user.try(:admin?)
+  end
+
+  def translate_status(status)
+    if status == Settings.status.pending
+      I18n.t("ui.general.pending")
+    elsif status == Settings.status.approved
+      I18n.t("ui.general.approved")
+    end
+  end
+
   # return a list of cities
   def cities_helper
     [
