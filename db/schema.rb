@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118171222) do
+ActiveRecord::Schema.define(:version => 20111115030309) do
 
   create_table "districts", :force => true do |t|
     t.string   "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20111118171222) do
   create_table "organization_admins", :force => true do |t|
     t.integer  "user_id",                          :null => false
     t.integer  "organization_id",                  :null => false
-    t.string   "status",          :default => "p"
+    t.string   "status",          :default => "p", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,16 +124,16 @@ ActiveRecord::Schema.define(:version => 20111118171222) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
-  create_table "volunteer_jobs", :id => false, :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "job_id",     :null => false
+  create_table "volunteer_jobs", :force => true do |t|
+    t.integer  "user_id",                     :null => false
+    t.integer  "job_id",                      :null => false
+    t.string   "status",     :default => "p", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
   end
 
-  add_index "volunteer_jobs", ["job_id"], :name => "index_volunteers_on_job_id"
-  add_index "volunteer_jobs", ["user_id", "job_id"], :name => "index_volunteers_on_user_id_and_job_id", :unique => true
-  add_index "volunteer_jobs", ["user_id"], :name => "index_volunteers_on_user_id"
+  add_index "volunteer_jobs", ["job_id"], :name => "index_volunteer_jobs_on_job_id"
+  add_index "volunteer_jobs", ["user_id", "job_id"], :name => "index_volunteer_jobs_on_user_id_and_job_id", :unique => true
+  add_index "volunteer_jobs", ["user_id"], :name => "index_volunteer_jobs_on_user_id"
 
 end

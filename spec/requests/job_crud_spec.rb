@@ -6,8 +6,6 @@ feature "JobCrud", :focus => true  do
   scenario "test org admin create a new job" do
     # user login as an org admin
     sign_in_user Factory(:org_admin)
-    # login_school_admin
-    # binding.pry
 
     # create a new job
     visit new_job_path
@@ -23,14 +21,6 @@ feature "JobCrud", :focus => true  do
     click_button I18n.t("simple_form.labels.job.add")
     
     page.should have_content I18n.t("ui.job.successfully_added")
-
-    # view job
-
-    # click_link('View All')
-    # page.should have_content('test title')
-    # page.should have_content('test desc')
-    # page.should have_content('Org 1')
-
   end
 
   scenario "test org admin CRUD a new job" do
