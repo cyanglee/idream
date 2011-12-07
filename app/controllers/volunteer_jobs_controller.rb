@@ -34,11 +34,4 @@ class VolunteerJobsController < ApplicationController
     end
 
   end
-
-  private
-
-  def find_volunteer_jobs
-
-  end
-
 end

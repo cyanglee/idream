@@ -22,7 +22,7 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.build(params[:job])
     if @job.save
-      redirect_to @job, :notice => "Successfully created job."
+      redirect_to @job, :notice => I18n.t("ui.job.successfully_added")
     else
       render :action => 'new'
     end
@@ -35,7 +35,7 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if @job.update_attributes(params[:job])
-      redirect_to @job, :notice => "Successfully updated job."
+      redirect_to @job, :notice => I18n.t("ui.job.successfully_updated")
     else
       render :action => 'edit'
     end
@@ -44,6 +44,6 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-    redirect_to jobs_url, :notice => "Successfully destroyed job."
+    redirect_to jobs_url, :notice => I18n.t("ui.job.successfully_destroyed")
   end
 end

@@ -47,6 +47,9 @@ zh-TW:
     job:
       successfully_applied: 已申請並通知學校負責人
       successfully_cancelled: 已成功取消申請
+      successfully_added: 成功刊登工作
+      successfully_updated: 成功更新工作
+      successfully_destroyed: 成功移除工作
       delete: 取消申請
   date:
     formats:

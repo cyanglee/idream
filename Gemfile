@@ -19,7 +19,7 @@ gem 'haml'
 gem 'mime-types'
 gem 'simple_form'
 gem "bcrypt-ruby", :require => "bcrypt"
-gem "devise"
+gem "devise", :git => 'git://github.com/plataformatec/devise.git'
 gem "cancan"
 gem "omniauth"
 gem "omniauth-facebook"
@@ -47,7 +47,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'rspec-rails'
-  gem 'growl'
+  # gem 'growl'
+  gem 'growl_notify'
   gem 'pry'
   gem 'faker'
   gem 'awesome_print'
@@ -68,7 +69,8 @@ group :test do
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'mocha'
   gem 'launchy'
-  gem 'pickle'
+  # gem 'pickle'
   gem "spork", "> 0.9.0.rc"
   gem "guard-spork"
+  gem 'simplecov', :require => false
 end

@@ -31,10 +31,11 @@
   %tr
     %th=t("simple_form.labels.job.contact_phone")
     %td=@job.contact_phone
-  %tr
-    %td
-      = simple_form_for @job, :url => user_volunteer_jobs_path(@job), :method => :post do |f|
-        = f.input :id, :as => :hidden, :input_html => { :name => 'job[job_id]' }
-        = f.submit t("simple_form.labels.job.apply")
-    %td
+  - if is_volunteer?
+    %tr
+      %td
+        = simple_form_for @job, :url => user_volunteer_jobs_path(@job), :method => :post do |f|
+          = f.input :id, :as => :hidden, :input_html => { :name => 'job[job_id]' }
+          = f.submit t("simple_form.labels.job.apply")
+      %td
 

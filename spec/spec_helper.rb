@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'rubygems'
 require 'spork'
 
@@ -47,6 +50,7 @@ Spork.prefork do
     config.include(UserHelper)
 
     OmniAuth.config.test_mode = true
+    config.include Devise::TestHelpers, :type => :controller
   end
 
 end

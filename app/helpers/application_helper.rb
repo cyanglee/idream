@@ -1,8 +1,12 @@
 # coding: utf-8
 module ApplicationHelper
 
+  def is_volunteer?
+    current_user.try(:volunteer?)
+  end
+
   def is_school_admin?
-    can? :create, Job || current_user.try(:organization?)
+    current_user.try(:organization?)
   end
 
   def is_admin?
