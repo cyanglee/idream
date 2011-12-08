@@ -43,12 +43,12 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rb-fsevent'
+  # gem 'rb-fsevent'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'rspec-rails'
   # gem 'growl'
-  gem 'growl_notify'
+  # gem 'growl_notify'
   gem 'pry'
   gem 'faker'
   gem 'awesome_print'
@@ -68,7 +68,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'mocha'
-  gem 'launchy'
+  # gem 'launchy'
   # gem 'pickle'
   gem "spork", "> 0.9.0.rc"
   gem "guard-spork"

@@ -21,6 +21,7 @@ class Ability
       can :manage, Job, :user_id => user.id
       can [:edit, :update, :show], User, :id => user.id
       can :manage, OrganizationAdmin, :user_id => user.id
+
     end
   end
 
