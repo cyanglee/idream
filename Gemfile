@@ -68,7 +68,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'mocha'
-  # gem 'launchy'
+  gem 'launchy'
   # gem 'pickle'
   gem "spork", "> 0.9.0.rc"
   gem "guard-spork"

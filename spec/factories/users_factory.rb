@@ -34,6 +34,12 @@ FactoryGirl.define do
     email "volunteer@cyanglee.com"
     volunteer 1
   end
+  
+  factory :volunteer_with_jobs, :parent => :user do
+    email "volunteer@cyanglee.com"
+    volunteer 1
+    after_create { |a| Factory(:volunteer_job, :user => a) }
+  end
 
   factory :org_admin, :parent => :user do
     email "org@cyanglee.com"
@@ -41,7 +47,15 @@ FactoryGirl.define do
     
     after_create { |a| Factory(:organization_admin, :user => a) }
   end
-
+  
+  factory :org_admin_with_job, :parent => :user do
+    email "org@cyanglee.com"
+    organization 1    
+    
+    after_create { |a| Factory(:organization_admin, :user => a) }
+    after_create { |a| Factory(:job, :user => a) }
+  end
+  
   factory :admin, :parent => :user do
     email "admin@cyanglee.com"
     volunteer 1
@@ -61,5 +75,22 @@ FactoryGirl.define do
   factory :organization, :class => Organization do
     sequence(:name) { |i| "Org #{i}" }
     active 1
+  end
+end
+
+FactoryGirl.define do 
+  factory :job, :class => Job do
+    title "test title"
+    desc "test desc"
+    organization_id 1
+    begin_date "2011-01-01"
+    end_date "2011-01-03"
+  end
+end
+
+FactoryGirl.define do
+  factory :volunteer_job, :class => VolunteerJob do
+    association(:user)
+    association(:job)
   end
 end

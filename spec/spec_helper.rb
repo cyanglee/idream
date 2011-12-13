@@ -1,5 +1,5 @@
-require 'simplecov'
-SimpleCov.start
+# require 'simplecov'
+# SimpleCov.start
 
 require 'rubygems'
 require 'spork'
@@ -51,18 +51,19 @@ Spork.prefork do
 
     OmniAuth.config.test_mode = true
     config.include Devise::TestHelpers, :type => :controller
+    
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean_with(:truncation)
+    end
+    
   end
 
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  FactoryGirl.reload
   RSpec.configure do |config|
-    config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
-      DatabaseCleaner.clean_with(:truncation)
-    end
 
     config.before(:each) do
       DatabaseCleaner.start
@@ -72,6 +73,7 @@ Spork.each_run do
       DatabaseCleaner.clean
     end
   end
+  FactoryGirl.reload
 end
 
 # --- Instructions ---

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-feature "UserRegistration" do
+describe "UserRegistration" do
   before(:each) do
     @user = mock('User')
     @user.stub!(:first_name => "test", :last_name => "user", :email => "test@example.com", :username => "foo", :password => "111111")
   end
 
-  scenario "test user registers as a volunteer" do
+  it "test user registers as a volunteer" do
     # sign up as a volunteer
     visit new_user_registration_path
     within(".content") do
@@ -38,7 +38,7 @@ feature "UserRegistration" do
     page.should_not have_content I18n.t("ui.navigation.job.post_jobs")
   end
 
-  scenario "test user registers as a school admin" do
+  it "test user registers as a school admin" do
     # sign up as a volunteer
     visit new_user_registration_path
     within(".content") do
