@@ -82,9 +82,9 @@ FactoryGirl.define do
   factory :job, :class => Job do
     title "test title"
     desc "test desc"
-    organization_id 1
     begin_date "2011-01-01"
     end_date "2011-01-03"
+    association(:organization)
   end
 end
 
