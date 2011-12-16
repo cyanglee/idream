@@ -1,4 +1,4 @@
-- if @volunteer_jobs.empty?
+- if @volunteer_jobs.nil? or @volunteer_jobs.empty?
   %div.empty-message="目前無已申請的義工工作"
 - else
   %table.zebra-striped

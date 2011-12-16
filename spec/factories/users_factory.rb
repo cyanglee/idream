@@ -35,7 +35,7 @@ FactoryGirl.define do
     volunteer 1
   end
   
-  factory :volunteer_with_jobs, :parent => :user do
+  factory :volunteer_with_job, :parent => :user do
     email "volunteer@cyanglee.com"
     volunteer 1
     after_create { |a| Factory(:volunteer_job, :user => a) }

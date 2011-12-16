@@ -6,7 +6,7 @@ describe "UserRegistration" do
     @user.stub!(:first_name => "test", :last_name => "user", :email => "test@example.com", :username => "foo", :password => "111111")
   end
 
-  it "test user registers as a volunteer" do
+  it "should be able to register as a volunteer, including the test of sending the email" do
     # sign up as a volunteer
     visit new_user_registration_path
     within(".content") do
@@ -38,7 +38,7 @@ describe "UserRegistration" do
     page.should_not have_content I18n.t("ui.navigation.job.post_jobs")
   end
 
-  it "test user registers as a school admin" do
+  it "should be able to register as a school admin, including the test of sending the email" do
     # sign up as a volunteer
     visit new_user_registration_path
     within(".content") do

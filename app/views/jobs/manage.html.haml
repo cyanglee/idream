@@ -21,6 +21,8 @@
         = link_to t("simple_form.labels.job.edit"), edit_job_path(job)
         |
         = link_to t("simple_form.labels.job.applicant"), "#", :class => "show_applicant", :id => "job_#{job.id}"
+        |
+        = link_to t("simple_form.labels.job.delete"), job, :method => :delete, :confirm => "確定刪除?"
       - if !job.volunteer_jobs.empty?
         %tr.volunteer_jobs{:id => "applicants_#{job.id}"}
           %td{:colspan => '7'}

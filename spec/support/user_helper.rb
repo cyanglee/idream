@@ -11,4 +11,9 @@ module UserHelper
     # save_and_open_page
     page.should have_content I18n.t("ui.navigation.sign_out")
   end
+
+  def sign_out
+    click_link I18n.t("ui.navigation.sign_out")
+    page.should have_content I18n.t("ui.navigation.sign_in")
+  end
 end
