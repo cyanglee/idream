@@ -1,12 +1,27 @@
-- title "Organization"
+- title "Schools"
 
-%p
-  %strong Name:
-  = @organization.name
-
-%p
-  = link_to "Edit", edit_organization_path(@organization)
-  |
-  = link_to "Destroy", @organization, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", organizations_path
+%table.zebra-striped.job-details
+  %tr
+    %th=t("simple_form.labels.organization.name")
+    %td=@organization.name
+  %tr
+    %th=t("simple_form.labels.organization.profile")
+    %td=@organization.profile
+  %tr
+    %th=t("simple_form.labels.organization.address")
+    %td=@organization.address
+  %tr
+    %th=t("simple_form.labels.organization.district")
+    %td=@organization.district
+  %tr
+    %th=t("simple_form.labels.organization.city")
+    %td=@organization.city
+  %tr
+    %th=t("simple_form.labels.organization.zipcode")
+    %td=@organization.zipcode
+  %tr
+    %th=t("simple_form.labels.organization.contact")
+    %td=@organization.contact
+  %tr
+    %th=t("simple_form.labels.organization.webpage")
+    %td=@organization.webpage

@@ -1,12 +1,12 @@
 - title "Jobs"
 
-%table.zebra-striped
+%table.zebra-striped.job-details
   %tr
     %th=t("simple_form.labels.job.title")
     %td=@job.title
   %tr
     %th=t("simple_form.labels.job.school_name")
-    %td=@job.organization.name
+    %td= link_to @job.organization.name, @job.organization
   %tr
     %th=t("simple_form.labels.job.period")
     %td=@job.period
@@ -38,4 +38,8 @@
           = f.input :id, :as => :hidden, :input_html => { :name => 'job[job_id]' }
           = f.submit t("simple_form.labels.job.apply")
       %td
+  - if is_school_admin?
+    %tr
+      %td= link_to t("simple_form.labels.job.edit"), edit_job_path(@job), :class => 'primary btn'
 
+      %td

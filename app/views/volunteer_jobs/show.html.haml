@@ -14,8 +14,8 @@
     %tbody
     - for volunteer_job in @volunteer_jobs
       %tr
-        %td= volunteer_job.job.title
-        %td= volunteer_job.job.organization.name
+        %td= link_to volunteer_job.job.title, volunteer_job.job
+        %td= link_to volunteer_job.job.organization.name, volunteer_job.job.organization
         %td= volunteer_job.job.period
         %td= volunteer_job.job.begin_date
         %td= volunteer_job.job.end_date

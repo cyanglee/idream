@@ -6,6 +6,7 @@ class Ability
 
     # as a guest
     can :read, Job
+    can :read, Organization
 
     if user.has_role? user, :admin
       can :access, :rails_admin
@@ -20,7 +21,7 @@ class Ability
     if user.has_role? user, :organization
       can :manage, Job, :user_id => user.id
       can [:edit, :update, :show], User, :id => user.id
-      can :manage, OrganizationAdmin, :user_id => user.id
+      can :manage, Organization, :organization_admins => { :user_id => user.id }
 
     end
   end

@@ -11,9 +11,9 @@
   %tbody
   - for job in @jobs
     %tr
-      %td= job.title
+      %td= link_to job.title, job
       %td= truncate(job.desc, :length => 80)
-      %td= job.organization.name
+      %td= link_to job.organization.name, job.organization
       %td= job.period
       %td= job.begin_date
       %td= job.end_date
@@ -39,6 +39,6 @@
                 %tr
                   %td= volunteer_job.user.full_name
                   %td= volunteer_job.user.gender
-                  %td= volunteer_job.user.email
+                  %td= mail_to volunteer_job.user.email
                   %td= volunteer_job.user.home_phone
                   %td= volunteer_job.user.cell_phone
