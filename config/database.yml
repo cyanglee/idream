@@ -21,12 +21,8 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
   database: idream-test
-  pool: 5
-  username: rails
-  password: rails
-  host: localhost
+  username: 
 
 production:
   encoding: unicode

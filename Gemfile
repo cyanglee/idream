@@ -26,7 +26,7 @@ gem "omniauth-facebook"
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 gem 'rails-i18n'
-gem 'rest-graph'
+gem 'heroku'
 
 # Use unicorn as the web server
 #gem 'unicorn'
