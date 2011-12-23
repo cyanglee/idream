@@ -5,7 +5,6 @@ describe "Schools" do
   
   it "should be able to update school profile as a school admin" do
     sign_in_user Factory(:org_admin)
-    
     click_link I18n.t("ui.navigation.manage_schools")
     click_link I18n.t("ui.school.edit")
     
