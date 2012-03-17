@@ -59,6 +59,7 @@ group :development do
   gem 'nifty-generators'
   gem 'annotate', :git => "https://github.com/ctran/annotate_models.git"
   gem 'hirb'
+  gem 'taps'
 end
 
 group :test do

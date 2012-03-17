@@ -11,3 +11,4 @@ atlassian-ide-plugin.xml
 .irbrc
 *.ids
 coverage/
+vendor/bundle

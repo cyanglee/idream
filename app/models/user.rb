@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
   #    :message => I18n.t("message.user.wrong_phone_number"),
   #    :with => /^\d{10}$/
 
-
   def has_role?(user, role)
     user.id.nil? ? false : User.where(:id => user.id, role => true).any?
   end
