@@ -27,6 +27,7 @@ gem "omniauth-facebook"
 gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 gem 'rails-i18n'
 gem 'heroku'
+gem 'newrelic_rpm'
 
 # Use unicorn as the web server
 #gem 'unicorn'
